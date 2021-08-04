@@ -2,6 +2,7 @@
 'use strict';
 
 const ASCII_ENCODED_ZERO = Buffer.from([0]).toString('ASCII');
+const USBIP_SERVICE_PORT = 3240;
 
 const net = require('net');
 const { EventEmitter } = require('events');
@@ -20,6 +21,12 @@ const lib = require('./lib.js');
  * @typedef UsbIpServerSimConfig
  * @property {string} version
  * @property {net.ServerOpts} [tcpOptions]
+ * @property {EventEmitterOptions} [eventEmitterOptions]
+ */
+
+/**
+ * @typedef EventEmitterOptions
+ * @property {boolean} [captureRejections]
  */
 
 class UsbIpServerSim extends EventEmitter {
@@ -28,6 +35,7 @@ class UsbIpServerSim extends EventEmitter {
      * @param {UsbIpServerSimConfig} config
      */
     constructor(config) {
+        super(config.eventEmitterOptions);
         config = config || {};
         config.tcpOptions = config.tcpOptions || { allowHalfOpen: false, pauseOnConnect: false, };
 
@@ -36,6 +44,7 @@ class UsbIpServerSim extends EventEmitter {
             this._protocolLayer = new UsbIpProtocolLayer(this._server, config.version);
 
             this._protocolLayer.on('error', error => this.emit('protocolError', error));
+            this._protocolLayer.on('write', (socket, data, error) => this.emit('write', socket, data, error));
         } catch (error) {
             throw new Error(`Failed to initialize net.Server object in UsbIpServerSim constructor. Reason = ${error}`);
         }
@@ -90,11 +99,11 @@ class UsbIpServerSim extends EventEmitter {
 
     /**
      *
-     * @param {number} port
      * @param {string} address
+     * @param {number} [port] Default: 3240
      */
-    listen(port, address) {
-        this._server.listen(port, address);
+    listen(address, port) {
+        this._server.listen(port || USBIP_SERVICE_PORT, address);
         return this;
     }
 }
@@ -105,7 +114,8 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {string} [version]
      */
     constructor(serverToControl, version) {
-        this.versionString = version || '1.1.1';
+        super();
+        this.versionString = version;
         this.encodedVersionNumber = 0;
         if (this.versionString) {
             let versionSplit = this.versionString.split('.');
@@ -155,7 +165,7 @@ class UsbIpProtocolLayer extends EventEmitter {
                 this.emit('error', new Error(`Unrecognized command (0x${incomingCommand.toString(16)})`));
             } else {
                 try {
-                    cmdHandler(socket, outgoingVersion, incomingData);
+                    cmdHandler.bind(this)(socket, outgoingVersion, incomingData);
                 } catch (err) {
                     this.emit('error', new Error(`Unable to process incoming packet ${util.inspect(incomingData)}. Reason = ${err}`));
                 }
@@ -299,8 +309,13 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {SimulatedUsbDevice[]} deviceList
      */
     constructDeviceListResponse(serverVersion, deviceList) {
-        let responseBytes = this.constructHeaderBytes(serverVersion, lib.commands.OP_REP_DEVLIST);
-
+        let responseBytes = Buffer.concat(
+            [
+                this.constructHeaderBytes(serverVersion, lib.commands.OP_REP_DEVLIST),
+                this.constructDeviceListLength(deviceList.length),
+            ]
+        );
+        
         for (let device of deviceList) {
             responseBytes = Buffer.concat(
                 [
@@ -342,7 +357,7 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {number} [status]
      */
     constructHeaderBytes(serverVersion, replyCode, status) {
-        Buffer.concat([
+        return Buffer.concat([
             this.constructVersionBytes(serverVersion),
             this.constructReplyCodeBytes(replyCode),
             this.constructStatusBytes(status || 0),
@@ -371,6 +386,10 @@ class UsbIpProtocolLayer extends EventEmitter {
      */
     constructStatusBytes(status) {
         return this.constructUInt32BE(status);
+    }
+
+    constructDeviceListLength(length) {
+        return this.constructUInt32BE(length);
     }
 
     /**
@@ -406,11 +425,11 @@ class UsbIpProtocolLayer extends EventEmitter {
         );
 
         if (includeInterfaceDescriptions) {
-            for (let interface of config.interfaces) {
+            for (let interfaceDescription of config.interfaces) {
                 deviceDescriptionBytes = Buffer.concat(
                     [
                         deviceDescriptionBytes,
-                        this.constructDeviceInterfaceDescription(interface),
+                        this.constructDeviceInterfaceDescription(interfaceDescription),
                     ]
                 );
             }
@@ -421,14 +440,14 @@ class UsbIpProtocolLayer extends EventEmitter {
 
     /**
      * 
-     * @param {SimulatedUsbDeviceInterface} interface
+     * @param {SimulatedUsbDeviceInterface} interfaceDescription
      */
-    constructDeviceInterfaceDescription(interface) {
+    constructDeviceInterfaceDescription(interfaceDescription) {
         return Buffer.concat(
             [
-                interface.bInterfaceClass,
-                interface.bInterfaceSubClass,
-                interface.bInterfaceProtocol,
+                interfaceDescription.bInterfaceClass,
+                interfaceDescription.bInterfaceSubClass,
+                interfaceDescription.bInterfaceProtocol,
                 0,  // padding byte for alignment
             ]
         );
@@ -581,6 +600,7 @@ class SimulatedUsbDevice extends EventEmitter {
      * @param {SimulatedUsbDeviceConfig} config
      */
     constructor(config) {
+        super();
         this.config = config;
 
         /** @type {net.Socket} */
@@ -590,3 +610,16 @@ class SimulatedUsbDevice extends EventEmitter {
 
 module.exports.UsbIpServerSim = UsbIpServerSim;
 module.exports.lib = lib;
+
+let server = new UsbIpServerSim({ /*version: '1.1.1'*/ });
+server.on('write', (socket, data, error) => {
+    if (error) {
+        console.log(`Error writing ${util.inspect(data)}: ${util.inspect(error)}`);
+    } else {
+        console.log(`Wrote ${util.inspect(data)}`);
+    }
+});
+
+server.on('protocolError', console.error);
+
+server.listen('0.0.0.0');
