@@ -1,0 +1,9 @@
+{
+  "name": "node_usbip_server",
+  "version": "0.0.0",
+  "description": "Module for simulating usb devices via the UsbIp protocol",
+  "main": "index.js",
+  "author": {
+    "name": "Jonah D. Haney"
+  }
+}
