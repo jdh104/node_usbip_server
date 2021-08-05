@@ -55,7 +55,7 @@ class UsbIpServerSim extends EventEmitter {
      * @param {SimulatedUsbDevice} device
      */
     exportDevice(device) {
-        let emptyIndexes = this._server.getEmptyIndexes();
+        let emptyIndexes = [...this._server.getEmptyIndexes()];
         if (emptyIndexes.length < 1) {
             this._server.devices.push(device);
         } else {
@@ -425,11 +425,11 @@ class UsbIpProtocolLayer extends EventEmitter {
         );
 
         if (includeInterfaceDescriptions) {
-            for (let interfaceDescription of config.interfaces) {
+            for (let deviceInterface of config.interfaces) {
                 deviceDescriptionBytes = Buffer.concat(
                     [
                         deviceDescriptionBytes,
-                        this.constructDeviceInterfaceDescription(interfaceDescription),
+                        this.constructDeviceInterfaceDescription(deviceInterface),
                     ]
                 );
             }
@@ -440,14 +440,16 @@ class UsbIpProtocolLayer extends EventEmitter {
 
     /**
      * 
-     * @param {SimulatedUsbDeviceInterface} interfaceDescription
+     * @param {SimulatedUsbDeviceInterface} deviceInterface
      */
-    constructDeviceInterfaceDescription(interfaceDescription) {
-        return Buffer.concat(
+    constructDeviceInterfaceDescription(deviceInterface) {
+        let interfaceConfig = deviceInterface.config;
+
+        return Buffer.from(
             [
-                interfaceDescription.bInterfaceClass,
-                interfaceDescription.bInterfaceSubClass,
-                interfaceDescription.bInterfaceProtocol,
+                interfaceConfig.bInterfaceClass,
+                interfaceConfig.bInterfaceSubClass,
+                interfaceConfig.bInterfaceProtocol,
                 0,  // padding byte for alignment
             ]
         );
@@ -588,10 +590,10 @@ class UsbIpServer extends net.Server {
  */
 
 /**
- * @typedef SimulatedUsbDeviceInterface
- * @property {string} bInterfaceClass
- * @property {string} bInterfaceSubClass
- * @property {string} bInterfaceProtocol
+ * @typedef SimulatedUsbDeviceInterfaceConfig
+ * @property {number} bInterfaceClass
+ * @property {number} bInterfaceSubClass
+ * @property {number} bInterfaceProtocol
  */
 
 class SimulatedUsbDevice extends EventEmitter {
@@ -608,18 +610,65 @@ class SimulatedUsbDevice extends EventEmitter {
     }
 }
 
-module.exports.UsbIpServerSim = UsbIpServerSim;
-module.exports.lib = lib;
-
-let server = new UsbIpServerSim({ /*version: '1.1.1'*/ });
-server.on('write', (socket, data, error) => {
-    if (error) {
-        console.log(`Error writing ${util.inspect(data)}: ${util.inspect(error)}`);
-    } else {
-        console.log(`Wrote ${util.inspect(data)}`);
+class SimulatedUsbDeviceInterface {
+    /**
+     * 
+     * @param {SimulatedUsbDeviceInterfaceConfig} config
+     */
+    constructor(config) {
+        this.config = config;
     }
-});
+}
 
-server.on('protocolError', console.error);
+module.exports = {
+    UsbIpServerSim,
+    SimulatedUsbDevice,
+    SimulatedUsbDeviceInterface,
 
-server.listen('0.0.0.0');
+    /** not necessary for normal operation */
+    usbIpInternals: {
+        lib,
+        UsbIpProtocolLayer,
+        UsbIpServer,
+    }
+};
+
+if (!module.parent) {
+    let server = new UsbIpServerSim({ /*version: '1.1.1'*/ });
+    server.on('write', (socket, data, error) => {
+        if (error) {
+            console.log(`Error writing ${util.inspect(data)}: ${util.inspect(error)}`);
+        } else {
+            console.log(`Wrote ${util.inspect(data)}`);
+        }
+    });
+
+    server.on('protocolError', console.error);
+
+    let scannerDevice = new SimulatedUsbDevice({
+        busnum: 3,
+        devnum: 1,
+        path: '/sys/devices/simulation/usb3/3-1',
+        busid: '3-1',
+        bcdDevice: 261,
+        idVendor: 1008,
+        idProduct: 825,
+        bDeviceClass: 2,
+        bDeviceSubClass: 0,
+        bDeviceProtocol: 0,
+        bConfigurationValue: 0, // dont have example of this
+        bNumConfigurations: 1,
+        speed: 9600, // dont have example of this
+        interfaces: [
+            new SimulatedUsbDeviceInterface({
+                bInterfaceClass: 0,    // dont have example of these
+                bInterfaceSubClass: 0, // dont have example of these
+                bInterfaceProtocol: 0, // dont have example of these
+            }),
+        ],
+    })
+
+    server.exportDevice(scannerDevice);
+
+    server.listen('0.0.0.0');
+}
