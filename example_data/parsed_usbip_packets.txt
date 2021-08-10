@@ -35,7 +35,13 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 0,
-    setup: <Buffer 80 06 00 02 00 00 09 00>,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -63,7 +69,13 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 0,
-    setup: <Buffer 80 06 00 01 00 00 12 00>,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 256,
+      wIndex: 0,
+      wLength: 18
+    },
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -91,7 +103,13 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 0,
-    setup: <Buffer 80 06 00 02 00 00 09 00>,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -119,7 +137,13 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 0,
-    setup: <Buffer 80 06 00 02 00 00 22 00>,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 34
+    },
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -147,7 +171,13 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 0,
-    setup: <Buffer 00 09 01 00 00 00 00 00>,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: {
@@ -159,7 +189,13 @@
         startFrame: 0,
         numberOfPackets: 0,
         interval: 0,
-        setup: <Buffer 01 0b 00 00 00 00 00 00>,
+        setup: {
+          bmRequestType: { direction: 0, rType: 0, recipient: 1 },
+          bRequest: 11,
+          wValue: 0,
+          wIndex: 0,
+          wLength: 0
+        },
         transferBuffer: <Buffer >,
         isoPacketDescriptor: <Buffer >,
         leftoverData: null
@@ -202,7 +238,13 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 0,
-    setup: <Buffer 80 06 00 03 00 00 ff 00>,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 255
+    },
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -230,7 +272,13 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 0,
-    setup: <Buffer 80 06 02 03 09 04 ff 00>,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 770,
+      wIndex: 1033,
+      wLength: 255
+    },
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -258,7 +306,13 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 0,
-    setup: <Buffer 21 0a 00 00 00 00 00 00>,
+    setup: {
+      bmRequestType: { direction: 0, rType: 32, recipient: 1 },
+      bRequest: 10,
+      wValue: 0,
+      wIndex: 0,
+      wLength: 0
+    },
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -286,7 +340,13 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 0,
-    setup: <Buffer 81 06 00 22 00 00 74 00>,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 1 },
+      bRequest: 6,
+      wValue: 8704,
+      wIndex: 0,
+      wLength: 116
+    },
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -314,7 +374,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: {
@@ -326,7 +386,7 @@
         startFrame: 0,
         numberOfPackets: 0,
         interval: 10,
-        setup: <Buffer 00 00 00 00 00 00 00 00>,
+        setup: null,
         transferBuffer: <Buffer >,
         isoPacketDescriptor: <Buffer >,
         leftoverData: null
@@ -356,7 +416,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -384,7 +444,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -412,7 +472,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -440,7 +500,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -468,7 +528,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -496,7 +556,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -524,7 +584,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -552,7 +612,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -580,7 +640,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -608,7 +668,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -636,7 +696,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -664,7 +724,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -692,7 +752,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -720,7 +780,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -748,7 +808,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -776,7 +836,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -804,7 +864,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -832,7 +892,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -860,7 +920,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -888,7 +948,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -916,7 +976,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -944,7 +1004,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -972,7 +1032,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1000,7 +1060,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1028,7 +1088,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1056,7 +1116,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1084,7 +1144,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1112,7 +1172,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1140,7 +1200,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1168,7 +1228,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1196,7 +1256,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1224,7 +1284,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1252,7 +1312,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1280,7 +1340,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1308,7 +1368,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1336,7 +1396,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1364,7 +1424,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1392,7 +1452,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1420,7 +1480,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1448,7 +1508,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1476,7 +1536,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1504,7 +1564,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1532,7 +1592,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1560,7 +1620,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1588,7 +1648,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1616,7 +1676,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1644,7 +1704,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1672,7 +1732,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1700,7 +1760,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1728,7 +1788,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1756,7 +1816,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1784,7 +1844,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1812,7 +1872,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1840,7 +1900,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1868,7 +1928,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1896,7 +1956,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1924,7 +1984,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1952,7 +2012,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -1980,7 +2040,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2008,7 +2068,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2036,7 +2096,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2064,7 +2124,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2092,7 +2152,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2120,7 +2180,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2148,7 +2208,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2176,7 +2236,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2204,7 +2264,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2232,7 +2292,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2260,7 +2320,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2288,7 +2348,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2316,7 +2376,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2344,7 +2404,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2372,7 +2432,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2400,7 +2460,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2428,7 +2488,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2456,7 +2516,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2484,7 +2544,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2512,7 +2572,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2540,7 +2600,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2568,7 +2628,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2596,7 +2656,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2624,7 +2684,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2652,7 +2712,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2680,7 +2740,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2708,7 +2768,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2736,7 +2796,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2764,7 +2824,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2792,7 +2852,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2820,7 +2880,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2848,7 +2908,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2876,7 +2936,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2904,7 +2964,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2932,7 +2992,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2960,7 +3020,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -2988,7 +3048,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3016,7 +3076,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3044,7 +3104,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3072,7 +3132,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3100,7 +3160,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3128,7 +3188,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3156,7 +3216,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3184,7 +3244,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3212,7 +3272,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3240,7 +3300,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3268,7 +3328,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3296,7 +3356,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3324,7 +3384,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3352,7 +3412,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3380,7 +3440,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3408,7 +3468,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3436,7 +3496,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3464,7 +3524,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3492,7 +3552,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3520,7 +3580,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3548,7 +3608,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3576,7 +3636,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3604,7 +3664,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3632,7 +3692,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3660,7 +3720,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3688,7 +3748,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3716,7 +3776,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3744,7 +3804,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3772,7 +3832,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3800,7 +3860,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3828,7 +3888,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3856,7 +3916,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3884,7 +3944,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3912,7 +3972,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3940,7 +4000,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3968,7 +4028,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -3996,7 +4056,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4024,7 +4084,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4052,7 +4112,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4080,7 +4140,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4108,7 +4168,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4136,7 +4196,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4164,7 +4224,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4192,7 +4252,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4220,7 +4280,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4248,7 +4308,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4276,7 +4336,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4304,7 +4364,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4332,7 +4392,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4360,7 +4420,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4388,7 +4448,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4416,7 +4476,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4444,7 +4504,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4472,7 +4532,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4500,7 +4560,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4528,7 +4588,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4556,7 +4616,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4584,7 +4644,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4612,7 +4672,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4640,7 +4700,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4668,7 +4728,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4696,7 +4756,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4724,7 +4784,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4752,7 +4812,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4780,7 +4840,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4808,7 +4868,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4836,7 +4896,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4864,7 +4924,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4892,7 +4952,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4920,7 +4980,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4948,7 +5008,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -4976,7 +5036,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5004,7 +5064,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5032,7 +5092,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5060,7 +5120,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5088,7 +5148,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5116,7 +5176,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5144,7 +5204,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5172,7 +5232,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5200,7 +5260,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5228,7 +5288,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5256,7 +5316,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5284,7 +5344,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5312,7 +5372,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5340,7 +5400,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5368,7 +5428,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5396,7 +5456,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5424,7 +5484,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5452,7 +5512,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5480,7 +5540,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5508,7 +5568,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5536,7 +5596,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5564,7 +5624,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5592,7 +5652,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5620,7 +5680,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5648,7 +5708,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5676,7 +5736,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5704,7 +5764,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5732,7 +5792,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5760,7 +5820,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5788,7 +5848,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5816,7 +5876,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5844,7 +5904,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5872,7 +5932,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5900,7 +5960,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5928,7 +5988,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5956,7 +6016,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -5984,7 +6044,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6012,7 +6072,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6040,7 +6100,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6068,7 +6128,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6096,7 +6156,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6124,7 +6184,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6152,7 +6212,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6180,7 +6240,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6208,7 +6268,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6236,7 +6296,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6264,7 +6324,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6292,7 +6352,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6320,7 +6380,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6348,7 +6408,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6376,7 +6436,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6404,7 +6464,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6432,7 +6492,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6460,7 +6520,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6488,7 +6548,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6516,7 +6576,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6544,7 +6604,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6572,7 +6632,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6600,7 +6660,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6628,7 +6688,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6656,7 +6716,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6684,7 +6744,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6712,7 +6772,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6740,7 +6800,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6768,7 +6828,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6796,7 +6856,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6824,7 +6884,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6852,7 +6912,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6880,7 +6940,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6908,7 +6968,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6936,7 +6996,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6964,7 +7024,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -6992,7 +7052,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7020,7 +7080,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7048,7 +7108,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7076,7 +7136,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7104,7 +7164,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7132,7 +7192,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7160,7 +7220,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7188,7 +7248,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7216,7 +7276,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7244,7 +7304,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7272,7 +7332,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7300,7 +7360,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7328,7 +7388,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7356,7 +7416,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7384,7 +7444,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7412,7 +7472,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7440,7 +7500,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7468,7 +7528,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7496,7 +7556,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7524,7 +7584,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7552,7 +7612,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7580,7 +7640,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7608,7 +7668,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7636,7 +7696,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7664,7 +7724,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7692,7 +7752,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7720,7 +7780,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7748,7 +7808,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7776,7 +7836,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7804,7 +7864,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7832,7 +7892,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7860,7 +7920,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7888,7 +7948,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7916,7 +7976,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7944,7 +8004,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -7972,7 +8032,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8000,7 +8060,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8028,7 +8088,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8056,7 +8116,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8084,7 +8144,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8112,7 +8172,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8140,7 +8200,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8168,7 +8228,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8196,7 +8256,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8224,7 +8284,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8252,7 +8312,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8280,7 +8340,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8308,7 +8368,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8336,7 +8396,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8364,7 +8424,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8392,7 +8452,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8420,7 +8480,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8448,7 +8508,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8476,7 +8536,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8504,7 +8564,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8532,7 +8592,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8560,7 +8620,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8588,7 +8648,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8616,7 +8676,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8644,7 +8704,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8672,7 +8732,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8700,7 +8760,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8728,7 +8788,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8756,7 +8816,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8784,7 +8844,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8812,7 +8872,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8840,7 +8900,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8868,7 +8928,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8896,7 +8956,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8924,7 +8984,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8952,7 +9012,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -8980,7 +9040,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9008,7 +9068,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9036,7 +9096,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9064,7 +9124,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9092,7 +9152,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9120,7 +9180,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9148,7 +9208,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9176,7 +9236,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9204,7 +9264,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9232,7 +9292,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9260,7 +9320,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9288,7 +9348,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9316,7 +9376,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9344,7 +9404,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9372,7 +9432,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9400,7 +9460,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9428,7 +9488,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9456,7 +9516,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9484,7 +9544,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9512,7 +9572,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9540,7 +9600,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9568,7 +9628,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9596,7 +9656,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9624,7 +9684,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9652,7 +9712,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9680,7 +9740,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9708,7 +9768,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9736,7 +9796,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9764,7 +9824,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9792,7 +9852,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9820,7 +9880,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9848,7 +9908,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9876,7 +9936,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9904,7 +9964,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9932,7 +9992,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9960,7 +10020,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -9988,7 +10048,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10016,7 +10076,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10044,7 +10104,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10072,7 +10132,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10100,7 +10160,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10128,7 +10188,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10156,7 +10216,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10184,7 +10244,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10212,7 +10272,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10240,7 +10300,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10268,7 +10328,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10296,7 +10356,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10324,7 +10384,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10352,7 +10412,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10380,7 +10440,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10408,7 +10468,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10436,7 +10496,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10464,7 +10524,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10492,7 +10552,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10520,7 +10580,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10548,7 +10608,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10576,7 +10636,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10604,7 +10664,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10632,7 +10692,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10660,7 +10720,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10688,7 +10748,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10716,7 +10776,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10744,7 +10804,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10772,7 +10832,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10800,7 +10860,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10828,7 +10888,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10856,7 +10916,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10884,7 +10944,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10912,7 +10972,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10940,7 +11000,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10968,7 +11028,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -10996,7 +11056,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11024,7 +11084,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11052,7 +11112,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11080,7 +11140,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11108,7 +11168,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11136,7 +11196,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11164,7 +11224,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11192,7 +11252,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11220,7 +11280,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11248,7 +11308,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11276,7 +11336,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11304,7 +11364,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11332,7 +11392,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11360,7 +11420,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11388,7 +11448,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11416,7 +11476,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11444,7 +11504,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11472,7 +11532,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11500,7 +11560,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11528,7 +11588,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11556,7 +11616,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11584,7 +11644,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11612,7 +11672,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11640,7 +11700,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11668,7 +11728,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11696,7 +11756,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11724,7 +11784,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11752,7 +11812,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11780,7 +11840,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11808,7 +11868,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11836,7 +11896,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11864,7 +11924,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11892,7 +11952,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11920,7 +11980,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11948,7 +12008,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -11976,7 +12036,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12004,7 +12064,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12032,7 +12092,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12060,7 +12120,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12088,7 +12148,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12116,7 +12176,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12144,7 +12204,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12172,7 +12232,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12200,7 +12260,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12228,7 +12288,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12256,7 +12316,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12284,7 +12344,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12312,7 +12372,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12340,7 +12400,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12368,7 +12428,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12396,7 +12456,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12424,7 +12484,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12452,7 +12512,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12480,7 +12540,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12508,7 +12568,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12536,7 +12596,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12564,7 +12624,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12592,7 +12652,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12620,7 +12680,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12648,7 +12708,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12676,7 +12736,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12704,7 +12764,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12732,7 +12792,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12760,7 +12820,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12788,7 +12848,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12816,7 +12876,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12844,7 +12904,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12872,7 +12932,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12900,7 +12960,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12928,7 +12988,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12956,7 +13016,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -12984,7 +13044,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13012,7 +13072,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13040,7 +13100,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13068,7 +13128,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13096,7 +13156,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13124,7 +13184,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13152,7 +13212,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13180,7 +13240,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13208,7 +13268,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13236,7 +13296,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13264,7 +13324,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13292,7 +13352,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13320,7 +13380,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13348,7 +13408,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13376,7 +13436,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13404,7 +13464,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13432,7 +13492,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13460,7 +13520,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13488,7 +13548,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13516,7 +13576,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13544,7 +13604,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13572,7 +13632,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13600,7 +13660,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13628,7 +13688,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13656,7 +13716,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13684,7 +13744,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13712,7 +13772,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13740,7 +13800,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13768,7 +13828,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13796,7 +13856,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13824,7 +13884,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13852,7 +13912,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13880,7 +13940,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13908,7 +13968,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13936,7 +13996,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13964,7 +14024,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -13992,7 +14052,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14020,7 +14080,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14048,7 +14108,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14076,7 +14136,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14104,7 +14164,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14132,7 +14192,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14160,7 +14220,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14188,7 +14248,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14216,7 +14276,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14244,7 +14304,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14272,7 +14332,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14300,7 +14360,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14328,7 +14388,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14356,7 +14416,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14384,7 +14444,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14412,7 +14472,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14440,7 +14500,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14468,7 +14528,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14496,7 +14556,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14524,7 +14584,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14552,7 +14612,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14580,7 +14640,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14608,7 +14668,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14636,7 +14696,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14664,7 +14724,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14692,7 +14752,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14720,7 +14780,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14748,7 +14808,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14776,7 +14836,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14804,7 +14864,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14832,7 +14892,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14860,7 +14920,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14888,7 +14948,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14916,7 +14976,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14944,7 +15004,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -14972,7 +15032,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15000,7 +15060,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15028,7 +15088,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15056,7 +15116,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15084,7 +15144,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15112,7 +15172,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15140,7 +15200,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15168,7 +15228,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15196,7 +15256,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15224,7 +15284,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15252,7 +15312,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15280,7 +15340,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15308,7 +15368,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15336,7 +15396,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15364,7 +15424,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15392,7 +15452,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15420,7 +15480,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15448,7 +15508,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15476,7 +15536,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15504,7 +15564,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15532,7 +15592,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15560,7 +15620,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15588,7 +15648,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15616,7 +15676,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15644,7 +15704,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15672,7 +15732,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15700,7 +15760,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15728,7 +15788,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15756,7 +15816,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15784,7 +15844,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15812,7 +15872,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15840,7 +15900,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15868,7 +15928,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15896,7 +15956,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15924,7 +15984,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15952,7 +16012,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -15980,7 +16040,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16008,7 +16068,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16036,7 +16096,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16064,7 +16124,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16092,7 +16152,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16120,7 +16180,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16148,7 +16208,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16176,7 +16236,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16204,7 +16264,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16232,7 +16292,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16260,7 +16320,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16288,7 +16348,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16316,7 +16376,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16344,7 +16404,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16372,7 +16432,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16400,7 +16460,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16428,7 +16488,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16456,7 +16516,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16484,7 +16544,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16512,7 +16572,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16540,7 +16600,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16568,7 +16628,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16596,7 +16656,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16624,7 +16684,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16652,7 +16712,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16680,7 +16740,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16708,7 +16768,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16736,7 +16796,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16764,7 +16824,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16792,7 +16852,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16820,7 +16880,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16848,7 +16908,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16876,7 +16936,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16904,7 +16964,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16932,7 +16992,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16960,7 +17020,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -16988,7 +17048,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17016,7 +17076,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17044,7 +17104,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17072,7 +17132,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17100,7 +17160,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17128,7 +17188,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17156,7 +17216,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17184,7 +17244,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17212,7 +17272,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17240,7 +17300,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17268,7 +17328,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17296,7 +17356,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17324,7 +17384,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17352,7 +17412,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17380,7 +17440,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17408,7 +17468,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17436,7 +17496,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17464,7 +17524,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17492,7 +17552,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17520,7 +17580,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17548,7 +17608,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17576,7 +17636,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17604,7 +17664,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17632,7 +17692,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17660,7 +17720,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17688,7 +17748,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17716,7 +17776,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17744,7 +17804,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17772,7 +17832,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17800,7 +17860,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17828,7 +17888,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17856,7 +17916,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17884,7 +17944,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17912,7 +17972,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17940,7 +18000,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17968,7 +18028,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -17996,7 +18056,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18024,7 +18084,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18052,7 +18112,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18080,7 +18140,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18108,7 +18168,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18136,7 +18196,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18164,7 +18224,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18192,7 +18252,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18220,7 +18280,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18248,7 +18308,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18276,7 +18336,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18304,7 +18364,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18332,7 +18392,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18360,7 +18420,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18388,7 +18448,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18416,7 +18476,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18444,7 +18504,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18472,7 +18532,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18500,7 +18560,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18528,7 +18588,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18556,7 +18616,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18584,7 +18644,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18612,7 +18672,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18640,7 +18700,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18668,7 +18728,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18696,7 +18756,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18724,7 +18784,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18752,7 +18812,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18780,7 +18840,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18808,7 +18868,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18836,7 +18896,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null
@@ -18864,7 +18924,7 @@
     startFrame: 0,
     numberOfPackets: 0,
     interval: 10,
-    setup: <Buffer 00 00 00 00 00 00 00 00>,
+    setup: null,
     transferBuffer: <Buffer >,
     isoPacketDescriptor: <Buffer >,
     leftoverData: null

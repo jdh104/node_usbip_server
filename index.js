@@ -90,7 +90,7 @@ const lib = require('./lib.js');
  * @property {number} startFrame shall be set to 0 if not ISO transfer
  * @property {number} numberOfPackets shall be set to 0xffffffff if not ISO transfer
  * @property {number} interval
- * @property {Buffer} setup
+ * @property {Buffer | ParsedSetupBytes} setup
  * @property {Buffer} transferBuffer
  * @property {Buffer} isoPacketDescriptor
  * @property {Buffer | UsbIpParsedPacket} [leftoverData]
@@ -112,13 +112,29 @@ const lib = require('./lib.js');
  * @typedef UnlinkCommandBody
  * @property {UsbipBasicHeader} header
  * @property {number} unlinkSeqNum
- * */
+ */
 
 /**
  * @typedef UnlinkResponseBody
  * @property {UsbipBasicHeader} header
  * @property {number} status
- * */
+ */
+
+/**
+ * @typedef ParsedSetupBytes
+ * @property {BmRequestType} bmRequestType
+ * @property {number} bRequest
+ * @property {number} wValue
+ * @property {number} wIndex
+ * @property {number} wLength
+ */
+
+/**
+ * @typedef BmRequestType
+ * @property {number} direction
+ * @property {number} rType
+ * @property {number} recipient
+ */
 
 class UsbIpServerSim extends EventEmitter {
     /**
@@ -280,12 +296,20 @@ class UsbIpProtocolLayer extends EventEmitter {
 
     /**
      * 
+     * @param {Error} err
+     */
+    error(err) {
+        this.emit('error', err);
+    }
+
+    /**
+     * 
      * @param {Buffer} incomingData
      * @param {net.Socket} socket
      */
     handle(incomingData, socket) {
         if (incomingData.length < 4) {
-            this.emit('error', new Error(`Commands must be at least 4 bytes in length; called handle(${util.inspect(incomingData)})`));
+            this.error(new Error(`Commands must be at least 4 bytes in length; called handle(${util.inspect(incomingData)})`));
         } else {
             let incomingVersion = incomingData.readUInt16BE();
 
@@ -301,12 +325,12 @@ class UsbIpProtocolLayer extends EventEmitter {
             let cmdHandler = this[incomingCommand];
 
             if (!cmdHandler) {
-                this.emit('error', new Error(`Unrecognized command ${incomingCommand}`));
+                this.error(new Error(`Unrecognized command ${incomingCommand}`));
             } else {
                 try {
                     cmdHandler.bind(this)(socket, outgoingVersion, incomingData);
                 } catch (err) {
-                    this.emit('error', new Error(`Unable to process incoming packet ${util.inspect(incomingData)}. Reason = ${err}`));
+                    this.error(new Error(`Unable to process incoming packet ${util.inspect(incomingData)}. Reason = ${err}`));
                 }
             }
         }
@@ -391,9 +415,31 @@ class UsbIpProtocolLayer extends EventEmitter {
 
             if (!targetDevice) {
                 throw new Error(`Could not find device with devId ${body.header.devid}`);
-            } else if (!body.setup.equals(EMPTY_SETUP_PACKET_BYTES)) {
-                targetDevice.emit('setup', parsedPacket);
+            } else {
+                try {
+                    switch (body.header.endpoint) {
+                        case lib.endpoints.CONTROL:
+                            this.handleControlPacketBody(socket, body);
+
+                        case lib.endpoints.INTERRUPT:
+                            throw new Error('Not Implemented');
+
+                        case lib.endpoints.ISOCHRONOUS:
+                            throw new Error('Not Implemented');
+
+                        case lib.endpoints.BULK:
+                            throw new Error('Not Implemented');
+
+                        default:
+                            throw new Error(`Unrecognized endpoint; known endpoints = ${util.inspect(lib.endpoints)}`);
+                    }
+                } catch (err) {
+                    this.error(new Error(`Unable to handle endpoint '${body.header.endpoint}'. Reason = ${err}`));
+                }
             }
+            //if (!body.setup.equals(EMPTY_SETUP_PACKET_BYTES)) {
+            //    targetDevice.emit('setup', parsedPacket);
+            //}
 
             if (body.leftoverData) {
                 this.handle(body.leftoverData, socket);
@@ -409,16 +455,33 @@ class UsbIpProtocolLayer extends EventEmitter {
      */
     [lib.commands.USBIP_CMD_UNLINK](socket, serverVersion, packet) {
         // TODO: implement
-        throw new Error(`USBIP_CMD_UNLINK Not Implemented. Packet = ${util.inspect(this.parsePacket(packet), false, Infinity)}`);
+        throw new Error(`USBIP_CMD_UNLINK Not Implemented. Packet = ${util.inspect(this.parsePacket(packet, { parseLeftoverData: true, parseSetupPackets: true }), false, Infinity)}`);
     }
 
     /**
      * 
+     * @param {net.Socket} socket
+     * @param {SubmitCommandBody} body
+     */
+    handleControlPacketBody(socket, body) {
+        let parsedSetup = this.readSetupBytes(body.setup);
+        throw new Error('Not Implemented');
+    }
+
+    /**
+     * @typedef PacketParseOptions
+     * @property {boolean} parseLeftoverData
+     * @property {boolean} parseSetupPackets
+     */
+
+    /**
+     * 
      * @param {Buffer} packet
-     * @param {boolean} [parseLeftoverData]
+     * @param {PacketParseOptions} [options]
      * @returns {UsbIpParsedPacket}
      */
-    parsePacket(packet, parseLeftoverData) {
+    parsePacket(packet, options) {
+        options = options || {};
         if (packet.length < 4) {
             throw new Error('Parse failure: length of packet must be at least 4');
         } else {
@@ -430,7 +493,7 @@ class UsbIpProtocolLayer extends EventEmitter {
                 if (parsedObject.version == '0') {
                     delete parsedObject.version;
                     parsedObject.commandCode = this.readCommandCode(packet.slice(0, 4));
-                    parsedObject.body = this.readCommandBody(parsedObject.commandCode, packet.slice(4), parseLeftoverData);
+                    parsedObject.body = this.readCommandBody(parsedObject.commandCode, packet.slice(4), options);
                 } else {
                     parsedObject.commandCode = this.readOperationCode(packet.slice(2, 4));
                     parsedObject.body = this.readOperationBody(parsedObject.version, parsedObject.commandCode, packet.slice(4));
@@ -703,14 +766,14 @@ class UsbIpProtocolLayer extends EventEmitter {
      * 
      * @param {string} command
      * @param {Buffer} body
-     * @param {boolean} [parseLeftoverData]
+     * @param {PacketParseOptions} [options]
      */
-    readCommandBody(command, body, parseLeftoverData) {
+    readCommandBody(command, body, options) {
         try {
             let commandCode = lib.commands[command];
             switch (commandCode) {
                 case lib.commands.USBIP_CMD_SUBMIT:
-                    return this.readCmdSubmitBody(body, parseLeftoverData);
+                    return this.readCmdSubmitBody(body, options);
 
                 case lib.commands.USBIP_RET_SUBMIT:
                     return this.readRetSubmitBody(body);
@@ -796,31 +859,42 @@ class UsbIpProtocolLayer extends EventEmitter {
     /**
      *
      * @param {Buffer} body
-     * @param {boolean} [parseLeftoverData]
+     * @param {PacketParseOptions} [options]
      * @returns {SubmitCommandBody}
      */
-    readCmdSubmitBody(body, parseLeftoverData) {
+    readCmdSubmitBody(body, options) {
         if (body.length < 44) {
             throw new Error('Submit command body must be at least 44 bytes long');
         } else {
             try {
                 let header = this.readUsbipBasicHeader(body.slice(0, 16));
                 let transferBufferLength = body.readUInt32BE(20);
-                let tBufferEndIndex = 44 + (header.direction == 0 ? transferBufferLength : 0);
+
+                // if direction is not USBIP_DIR_OUT, we ignore the transferBufferLength
+                let tBufferEndIndex = 44 + (header.direction == lib.directions.out ? transferBufferLength : 0);
                 let startFrame = body.readUInt32BE(24);
                 let isISO = startFrame != 0;
                 let leftovers = body.slice(tBufferEndIndex);
 
                 if (!isISO && leftovers.length > 0) {
-                    var ipd = Buffer.alloc(0);
-                    if (parseLeftoverData) {
-                        var leftoverData = this.parsePacket(leftovers);
+                    var isoPacketDescriptor = Buffer.alloc(0);
+                    if (options.parseLeftoverData) {
+                        var leftoverData = this.parsePacket(leftovers, options);
                     } else {
                         var leftoverData = leftovers;
                     }
                 } else {
                     var leftoverData = null;
-                    var ipd = leftovers;
+                    var isoPacketDescriptor = leftovers;
+                }
+
+                let setup = body.slice(36, 44);
+                if (options.parseSetupPackets) {
+                    if (setup.equals(EMPTY_SETUP_PACKET_BYTES)) {
+                        setup = null; // contains no data
+                    } else {
+                        setup = this.readSetupBytes(setup);
+                    }
                 }
 
                 return {
@@ -830,9 +904,9 @@ class UsbIpProtocolLayer extends EventEmitter {
                     startFrame,
                     numberOfPackets: body.readUInt32BE(28),
                     interval: body.readUInt32BE(32),
-                    setup: body.slice(36, 44),
+                    setup,
                     transferBuffer: body.slice(44, tBufferEndIndex),
-                    isoPacketDescriptor: ipd,
+                    isoPacketDescriptor,
                     leftoverData,
                 };
             } catch (err) {
@@ -936,6 +1010,34 @@ class UsbIpProtocolLayer extends EventEmitter {
                 throw new Error(`Failed to parse usbip basic header. Reason = ${err}`);
             }
         }
+    }
+
+    /**
+     * This format is defined by USB, _not_ usbip; meaning Little-Endian is used for multi-byte encoding
+     * @param {Buffer} setup
+     * @returns {ParsedSetupBytes}
+     */
+    readSetupBytes(setup) {
+        return {
+            bmRequestType: this.readBmRequestType(setup[0]),
+            bRequest: setup[1],
+            wValue: setup.readUInt16LE(2),
+            wIndex: setup.readUInt16LE(4),
+            wLength: setup.readUInt16LE(6),
+        };
+    }
+
+    /**
+     * 
+     * @param {number} bmRequestType 8-bit mask
+     * @returns {BmRequestType}
+     */
+    readBmRequestType(bmRequestType) {
+        return {
+            direction: bmRequestType & 0b1000_0000,
+            rType: bmRequestType & 0b0110_0000,
+            recipient: bmRequestType & 0b0001_1111,
+        };
     }
 
     /**
@@ -2685,7 +2787,7 @@ if (!module.parent) {
     let proto = new UsbIpProtocolLayer();
 
     for (let key in data) {
-        fs.appendFileSync('test.txt', `${key} ${util.inspect(proto.parsePacket(Buffer.from(data[key]), true), false, Infinity)}`);
+        fs.appendFileSync('test.txt', `${key} ${util.inspect(proto.parsePacket(Buffer.from(data[key]), { parseSetupPackets: true, parseLeftoverData: true }), false, Infinity)}`);
         fs.appendFileSync('test.txt', '-----------------------------------------------------------------------------------------------------------------------------------------------------------\r\n');
     }
 }
