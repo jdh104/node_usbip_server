@@ -5,9 +5,11 @@ class UsbIpLexicon {
     constructor() {
         this.commands = new UsbIpCommands();
         this.directions = new UsbIpDirections();
-        this.endpoints = new UsbIpEndpoints();
+        this.transferTypes = new UsbTransferTypes();
         this.bmRequestTypes = new BmRequestTypes();
         this.bRequests = new BRequests();
+        this.descriptorTypes = new DescriptorTypes();
+        this.usbSpecificationVersions = new UsbSpecificationVersions();
     }
 }
 
@@ -42,12 +44,12 @@ class UsbIpDirections {
     }
 }
 
-class UsbIpEndpoints {
+class UsbTransferTypes {
     constructor() {
-        this.CONTROL = 0;
-        this.INTERRUPT = 1;
-        this.ISOCHRONOUS = 2;
-        this.BULK = 3;
+        this.control = 0b0000;
+        this.isochronous = 0b0001;
+        this.bulk = 0b0010;
+        this.interrupt = 0b0011;
     }
 }
 
@@ -69,7 +71,7 @@ class BmRequestDirections {
 class BmRequestTypeTypes {
     constructor() {
         this.standard = 0 << 5;
-        this['class'] = 1 << 5;
+        this.class = 1 << 5;
         this.vendor = 2 << 5;
         this.reserved = 3 << 5;
     }
@@ -78,7 +80,7 @@ class BmRequestTypeTypes {
 class BmRequestRecipients {
     constructor() {
         this.device = 0;
-        this['inteface'] = 1;
+        this.interface = 1;
         this.endpoint = 2;
         this.other = 3;
     }
@@ -97,6 +99,22 @@ class BRequests {
         this.getInterface = 0x0a;
         this.setInterface = 0x11;
         this.synchFrame = 0x12;
+    }
+}
+
+class DescriptorTypes {
+    constructor() {
+        this.device = 0x01 << 8;
+        this.config = 0x02 << 8;
+        this.string = 0x03 << 8;
+        this.interface = 0x04 << 8;
+        this.endpoint = 0x05 << 8;
+    }
+}
+
+class UsbSpecificationVersions {
+    constructor() {
+        this.v2_0 = 0x0200;
     }
 }
 

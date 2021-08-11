@@ -32,7 +32,13 @@
     <Content Include="index.js" />
     <Content Include="lib.js" />
     <Content Include="package.json" />
+    <Content Include="queue.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="README.md" />
+    <Content Include="test_data.js">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
 </Project>
