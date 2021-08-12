@@ -136,7 +136,22 @@ const { Queue } = require('./queue.js');
  * @property {number} recipient
  */
 
+/** */
 class UsbIpServerSim extends EventEmitter {
+    /**
+     * @event UsbIpServerSim#protocolError
+     * @type {object}
+     * @property {Error} err
+     */
+
+    /**
+     * @event UsbIpServerSim#write
+     * @type {object}
+     * @property {net.Socket} socket
+     * @property {Buffer} data
+     * @property {Error} [err]
+     */
+
     /**
      * 
      * @param {UsbIpServerSimConfig} config
@@ -243,7 +258,7 @@ class UsbIpServerSim extends EventEmitter {
      */
     _normalizeDeviceConfig(config, defaultConfigNumber) {
         if (config.bConfigurationValue == null) {
-            config.bConfigurationValue = defaultConfigNumber
+            config.bConfigurationValue = defaultConfigNumber;
         }
 
         if (!config.interfaces) {
@@ -266,9 +281,9 @@ class UsbIpServerSim extends EventEmitter {
      * @param {SimulatedUsbDeviceInterface} iface
      * @param {number} defaultIfaceNumber
      */
-    _normalizeDeviceConfig(iface, defaultIfaceNumber) {
+    _normalizeDeviceInterface(iface, defaultIfaceNumber) {
         if (iface.bInterfaceNumber == null) {
-            iface.bInterfaceProtocol = defaultIfaceNumber
+            iface.bInterfaceNumber = defaultIfaceNumber;
         }
 
         if (!iface.endpoints) {
@@ -330,11 +345,15 @@ class UsbIpServerSim extends EventEmitter {
         }
     }
 
-    *removeAllDevices() {
+    removeAllDevices() {
+        let result = [];
+
         for (let removedDevice of this._server.devices.splice(0, Infinity)) {
             this._protocolLayer.notifyRemoved(removedDevice);
-            yield removedDevice;
+            result.push(removedDevice);
         }
+
+        return result;
     }
 
     /**
@@ -348,10 +367,32 @@ class UsbIpServerSim extends EventEmitter {
     }
 }
 
+/** */
 class UsbIpProtocolLayer extends EventEmitter {
+    /**
+     * @event UsbIpProtocolLayer#warning
+     * @type {object}
+     * @property {string} message
+     */
+    
+    /**
+     * @event UsbIpProtocolLayer#error
+     * @type {object}
+     * @property {Error} err
+     */
+        
+    /**
+     * @event UsbIpProtocolLayer#write
+     * @type {object}
+     * @property {net.Socket} socket
+     * @property {Buffer} data
+     * @property {Error} [err]
+     */
+            
     /**
      * @param {UsbIpServer} serverToControl
      * @param {string} [version]
+     * @fires UsbIpProtocolLayer#warning fired if `serverToControl` is not set
      */
     constructor(serverToControl, version) {
         super();
@@ -392,6 +433,7 @@ class UsbIpProtocolLayer extends EventEmitter {
     /**
      * 
      * @param {Error} err
+     * @fires UsbIpProtocolLayer#error
      */
     error(err) {
         this.emit('error', err);
@@ -446,6 +488,7 @@ class UsbIpProtocolLayer extends EventEmitter {
      * 
      * @param {net.Socket} socket
      * @param {Buffer} data
+     * @fires UsbIpProtocolLayer#write
      */
     notifyAndWriteData(socket, data) {
         return socket.write(data, err => {
@@ -1946,6 +1989,7 @@ class UsbIpProtocolLayer extends EventEmitter {
     }
 }
 
+/** */
 class UsbIpServer extends net.Server {
     /**
      * 
@@ -2181,7 +2225,16 @@ class UsbIpServer extends net.Server {
  * @property {number} [usageType] ISO mode only
  */
 
+/** */
 class SimulatedUsbDevice extends EventEmitter {
+    /**
+     * Event fired when the device writes an interrupt packet
+     * 
+     * @event SimulatedUsbDevice#interrupt
+     * @type {object}
+     * @property {Buffer} data
+     */
+        
     /**
      * 
      * @param {SimulatedUsbDeviceSpec} spec
@@ -2197,6 +2250,7 @@ class SimulatedUsbDevice extends EventEmitter {
     /**
      * 
      * @param {Buffer} data
+     * @fires SimulatedUsbDevice#interrupt
      */
     interrupt(data) {
         this.emit('interrupt', data);
