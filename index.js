@@ -566,7 +566,7 @@ class UsbIpProtocolLayer extends EventEmitter {
 
                     switch (transferType) {
                         case lib.transferTypes.control:
-                            this.handleControlPacketBody(targetDevice, body);
+                            this.notifyAndWriteData(socket, this.constructControlPacketResponse(targetDevice, body));
                             break;
 
                         case lib.transferTypes.isochronous:
@@ -608,6 +608,74 @@ class UsbIpProtocolLayer extends EventEmitter {
 
     /**
      * 
+     * @param {SubmitResponseBody} packet
+     */
+    constructSubmitResponsePacket(packet) {
+        let buf = Buffer.concat(
+            [
+                lib.commands.USBIP_RET_SUBMIT,
+                this.constructUsbipBasicHeader(packet.header.seqnum, packet.header.devid, packet.header.direction, packet.header.endpoint),
+
+                Buffer.from(
+                    [
+                        0, 0, 0, 0, // status          (4-bytes; to be written later)
+                        0, 0, 0, 0, // actualLength    (4-bytes; to be written later)
+                        0, 0, 0, 0, // startFrame      (4-bytes; to be written later)
+                        0, 0, 0, 0, // numberOfPackets (4-bytes; to be written later)
+                        0, 0, 0, 0, // errorCount      (4-bytes; to be written later)
+                        0, 0, 0, 0, // padding
+                        0, 0, 0, 0, // padding
+                    ]
+                ),
+                
+                packet.transferBuffer,
+                packet.isoPacketDescriptor,
+            ]
+        );
+
+        buf.writeUInt32BE(packet.status, 20);
+        buf.writeUInt32BE(packet.actualLength, 24);
+        buf.writeUInt32BE(packet.startFrame, 28);
+        buf.writeUInt32BE(packet.numberOfPackets, 32);
+        buf.writeUInt32BE(packet.errorCount, 36);
+
+        return buf;
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDevice} targetDevice
+     * @param {SubmitCommandBody} body
+     */
+    constructControlPacketResponse(targetDevice, body) {
+        try {
+            var transferBuffer = this.handleControlPacketBody(targetDevice, body);
+            var isError = false;
+        } catch (err) {
+            this.emit('error', err);
+            var transferBuffer = Buffer.alloc(0);
+            var isError = true;
+        }
+        
+        return this.constructSubmitResponsePacket({
+            header: {
+                seqnum: body.header.seqnum,
+                devid: 0,
+                direction: body.header.direction,
+                endpoint: 0,
+            },
+            status: isError ? 1 : 0,
+            startFrame: 0,
+            numberOfPackets: 0,
+            errorCount: 0,
+            actualLength: transferBuffer.length,
+            transferBuffer,
+            isoPacketDescriptor: Buffer.alloc(0),
+        });
+    }
+
+    /**
+     * 
      * @param {SimulatedUsbDevice} targetDevice
      * @param {SubmitCommandBody} body
      */
@@ -617,16 +685,13 @@ class UsbIpProtocolLayer extends EventEmitter {
         try {
             switch (setup.bmRequestType.rType) {
                 case lib.bmRequestTypes.types.standard:
-                    this.handleStandardControlPacketBody(targetDevice, body, setup);
-                    break;
+                    return this.handleStandardControlPacketBody(targetDevice, body, setup);
 
                 case lib.bmRequestTypes.types.class:
-                    this.handleClassControlPacketBody(targetDevice, body, setup);
-                    break;
+                    return this.handleClassControlPacketBody(targetDevice, body, setup);
 
                 case lib.bmRequestTypes.types.vendor:
-                    this.handleVendorControlPacketBody(targetDevice, body, setup);
-                    break;
+                    return this.handleVendorControlPacketBody(targetDevice, body, setup);
 
                 default:
                     throw new Error(`Unrecognized bmRequestType.rType '${setup.bmRequestType.rType}'; known types = ${util.inspect(lib.bmRequestTypes.types)}`);
@@ -645,20 +710,16 @@ class UsbIpProtocolLayer extends EventEmitter {
     handleStandardControlPacketBody(targetDevice, body, setup) {
         switch (setup.bmRequestType.recipient) {
             case lib.bmRequestTypes.recipients.device:
-                this.handleStandardDeviceControlPacketBody(targetDevice, body, setup);
-                break;
+                return this.handleStandardDeviceControlPacketBody(targetDevice, body, setup);
 
             case lib.bmRequestTypes.recipients.interface:
-                this.handleStandardInterfaceControlPacketBody(targetDevice, body, setup);
-                break;
+                return this.handleStandardInterfaceControlPacketBody(targetDevice, body, setup);
 
             case lib.bmRequestTypes.recipients.endpoint:
-                this.handleStandardEndpointControlPacketBody(targetDevice, body, setup);
-                break;
+                return this.handleStandardEndpointControlPacketBody(targetDevice, body, setup);
 
             case lib.bmRequestTypes.recipients.other:
-                this.handleStandardOtherControlPacketBody(targetDevice, body, setup);
-                break;
+                return this.handleStandardOtherControlPacketBody(targetDevice, body, setup);
 
             default:
                 throw new Error(`Unrecognized bmRequestType.recipient '${setup.bmRequestType.recipient}'; known types = ${util.inspect(lib.bmRequestTypes.recipients)}`);
@@ -693,49 +754,38 @@ class UsbIpProtocolLayer extends EventEmitter {
      */
     handleStandardDeviceControlPacketBody(targetDevice, body, setup) {
         switch (setup.bRequest) {
-            case lib.bRequests.getStatus:
-                this.handleGetStatusPacket(targetDevice, setup);
-                break;
+            case lib.bRequests.standard.getStatus:
+                return this.handleDeviceGetStatusPacket(targetDevice, setup);
 
-            case lib.bRequests.clearFeature:
-                this.handleClearFeaturePacket(targetDevice, setup);
-                break;
+            case lib.bRequests.standard.clearFeature:
+                return this.handleDeviceClearFeaturePacket(targetDevice, setup);
 
-            case lib.bRequests.setFeature:
-                this.handleSetFeaturePacket(targetDevice, setup);
-                break;
+            case lib.bRequests.standard.setFeature:
+                return this.handleDeviceSetFeaturePacket(targetDevice, setup);
 
-            case lib.bRequests.setAddress:
-                this.handleSetAddressPacket(targetDevice, setup);
-                break;
+            case lib.bRequests.standard.setAddress:
+                return this.handleSetAddressPacket(targetDevice, setup);
 
-            case lib.bRequests.getDescriptor:
-                this.handleGetDescriptorPacket(targetDevice, setup);
-                break;
+            case lib.bRequests.standard.getDescriptor:
+                return this.handleGetDescriptorPacket(targetDevice, setup);
 
-            case lib.bRequests.setDescriptor:
-                this.handleSetDescriptorPacket(targetDevice, setup);
-                break;
+            case lib.bRequests.standard.setDescriptor:
+                return this.handleSetDescriptorPacket(targetDevice, setup);
 
-            case lib.bRequests.getConfiguration:
-                this.handleGetConfigurationPacket(targetDevice, setup);
-                break;
+            case lib.bRequests.standard.getConfiguration:
+                return this.handleGetConfigurationPacket(targetDevice, setup);
 
-            case lib.bRequests.setConfiguration:
-                this.handleSetConfigurationPacket(targetDevice, setup);
-                break;
+            case lib.bRequests.standard.setConfiguration:
+                return this.handleSetConfigurationPacket(targetDevice, setup);
 
-            case lib.bRequests.getInterface:
-                this.handleGetInterfacePacket(targetDevice, setup);
-                break;
+            case lib.bRequests.standard.getInterface:
+                throw new Error('Unsupported Request: According to the spec, bRequest.GET_INTERFACE cannot be requested at the DEVICE level');
 
-            case lib.bRequests.setInterface:
-                this.handleSetInterfacePacket(targetDevice, setup);
-                break;
+            case lib.bRequests.standard.setInterface:
+                throw new Error('Unsupported Request: According to the spec, bRequest.SET_INTERFACE cannot be requested at the DEVICE level');
 
-            case lib.bRequests.synchFrame:
-                this.handleSynchFramePacket(targetDevice, setup);
-                break;
+            case lib.bRequests.standard.synchFrame:
+                throw new Error('Unsupported Request: According to the spec, bRequest.SYNCH_FRAME cannot be requested at the DEVICE level');
 
             default:
                 throw new Error(`Unrecognized bRequest '${setup.bRequest}'; known bRequests = ${util.inspect(lib.bRequests)}`);
@@ -749,7 +799,46 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {ParsedSetupBytes} setup
      */
     handleStandardInterfaceControlPacketBody(targetDevice, body, setup) {
-        throw new Error('Not Implemented');
+        switch (setup.bRequest) {
+            case lib.bRequests.standard.getStatus:
+                return this.handleInterfaceGetStatusPacket(targetDevice, setup);
+
+            case lib.bRequests.standard.clearFeature:
+                return this.handleInterfaceClearFeaturePacket(targetDevice, setup);
+
+            case lib.bRequests.standard.setFeature:
+                return this.handleInterfaceSetFeaturePacket(targetDevice, setup);
+
+            case lib.bRequests.standard.setAddress:
+                throw new Error('Unsupported Request: According to the spec, bRequest.SET_ADDRESS cannot be requested at the INTERFACE level');
+
+            case lib.bRequests.standard.getDescriptor:
+                throw new Error('Unsupported Request: According to the spec, bRequest.GET_DESCRIPTOR cannot be requested at the INTERFACE level');
+
+            case lib.bRequests.standard.setDescriptor:
+                throw new Error('Unsupported Request: According to the spec, bRequest.SET_DESCRIPTOR cannot be requested at the INTERFACE level');
+
+            case lib.bRequests.standard.getConfiguration:
+                throw new Error('Unsupported Request: According to the spec, bRequest.GET_CONFIGURATION cannot be requested at the INTERFACE level');
+
+            case lib.bRequests.standard.setConfiguration:
+                throw new Error('Unsupported Request: According to the spec, bRequest.SET_CONFIGURATION cannot be requested at the INTERFACE level');
+
+            case lib.bRequests.standard.getInterface:
+                return this.handleGetInterfacePacket(targetDevice, setup);
+
+            case lib.bRequests.standard.hidSetIdle:
+                return this.handleHidSetIdlePacket(targetDevice, setup);
+
+            case lib.bRequests.standard.setInterface:
+                return this.handleSetInterfacePacket(targetDevice, setup);
+
+            case lib.bRequests.standard.synchFrame:
+                throw new Error('Unsupported Request: According to the spec, bRequest.SYNCH_FRAME cannot be requested at the INTERFACE level');
+
+            default:
+                throw new Error(`Unrecognized bRequest '${setup.bRequest}'; known bRequests = ${util.inspect(lib.bRequests)}`);
+        }
     }
     
     /**
@@ -777,25 +866,52 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {SimulatedUsbDevice} targetDevice
      * @param {ParsedSetupBytes} setup
      */
-    handleGetStatusPacket(targetDevice, setup) {
+    handleDeviceGetStatusPacket(targetDevice, setup) {
         throw new Error('Not Implemented');
     }
-    
+
     /**
      * 
      * @param {SimulatedUsbDevice} targetDevice
      * @param {ParsedSetupBytes} setup
      */
-    handleClearFeaturePacket(targetDevice, setup) {
+    handleInterfaceGetStatusPacket(targetDevice, setup) {
         throw new Error('Not Implemented');
     }
-    
+
     /**
      * 
      * @param {SimulatedUsbDevice} targetDevice
      * @param {ParsedSetupBytes} setup
      */
-    handleSetFeaturePacket(targetDevice, setup) {
+    handleDeviceClearFeaturePacket(targetDevice, setup) {
+        throw new Error('Not Implemented');
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDevice} targetDevice
+     * @param {ParsedSetupBytes} setup
+     */
+    handleInterfaceClearFeaturePacket(targetDevice, setup) {
+        throw new Error('Not Implemented');
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDevice} targetDevice
+     * @param {ParsedSetupBytes} setup
+     */
+    handleDeviceSetFeaturePacket(targetDevice, setup) {
+        throw new Error('Not Implemented');
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDevice} targetDevice
+     * @param {ParsedSetupBytes} setup
+     */
+    handleInterfaceSetFeaturePacket(targetDevice, setup) {
         throw new Error('Not Implemented');
     }
     
@@ -819,24 +935,19 @@ class UsbIpProtocolLayer extends EventEmitter {
 
         switch (descriptorType) {
             case lib.descriptorTypes.device:
-                this.handleGetDeviceDescriptorPacket(targetDevice, setup, descriptorIndex);
-                break;
+                return this.handleGetDeviceDescriptorPacket(targetDevice, setup, descriptorIndex);
 
             case lib.descriptorTypes.config:
-                this.handleGetConfigDescriptorPacket(targetDevice, setup, descriptorIndex);
-                break;
+                return this.handleGetConfigDescriptorPacket(targetDevice, setup, descriptorIndex);
 
             case lib.descriptorTypes.string:
-                this.handleGetStringDescriptorPacket(targetDevice, setup, descriptorIndex);
-                break;
+                return this.handleGetStringDescriptorPacket(targetDevice, setup, descriptorIndex);
 
             case lib.descriptorTypes.interface:
-                this.handleGetInterfaceDescriptorPacket(targetDevice, setup, descriptorIndex);
-                break;
+                return this.handleGetInterfaceDescriptorPacket(targetDevice, setup, descriptorIndex);
 
             case lib.descriptorTypes.endpoint:
-                this.handleGetEndpointDescriptorPacket(targetDevice, setup, descriptorIndex);
-                break;
+                return this.handleGetEndpointDescriptorPacket(targetDevice, setup, descriptorIndex);
 
             default:
                 throw new Error(`Unrecognized descriptorType '${descriptorType}'; known descriptorTypes = ${util.inspect(lib.descriptorTypes)}`)
@@ -850,7 +961,7 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {number} descriptorIndex
      */
     handleGetDeviceDescriptorPacket(targetDevice, setup, descriptorIndex) {
-        this.notifyAndWriteData(targetDevice._attachedSocket, this.constructDeviceDescriptor(targetDevice, descriptorIndex, setup.wLength));
+        return this.constructDeviceDescriptor(targetDevice, descriptorIndex, setup.wLength);
     }
     
     /**
@@ -860,7 +971,7 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {number} descriptorIndex
      */
     handleGetConfigDescriptorPacket(targetDevice, setup, descriptorIndex) {
-        this.notifyAndWriteData(targetDevice._attachedSocket, this.constructConfigDescriptor(targetDevice, descriptorIndex, setup.wLength, true));
+        return this.constructConfigDescriptor(targetDevice, descriptorIndex, setup.wLength, true);
     }
     
     /**
@@ -918,7 +1029,8 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {ParsedSetupBytes} setup
      */
     handleSetConfigurationPacket(targetDevice, setup) {
-        throw new Error('Not Implemented');
+        targetDevice.spec.bConfigurationValue = setup.wValue;
+        return Buffer.alloc(0); // no data required to be sent back
     }
     
     /**
@@ -928,6 +1040,15 @@ class UsbIpProtocolLayer extends EventEmitter {
      */
     handleGetInterfacePacket(targetDevice, setup) {
         throw new Error('Not Implemented');
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDevice} targetDevice
+     * @param {ParsedSetupBytes} setup
+     */
+    handleHidSetIdlePacket(targetDevice, setup) {
+        return Buffer.alloc(0);
     }
     
     /**
@@ -2279,7 +2400,7 @@ if (!module.parent) {
         if (error) {
             console.log(`Error writing ${util.inspect(data)}: ${util.inspect(error)}`);
         } else {
-            console.log(`Wrote ${util.inspect(server._protocolLayer.parsePacket(data, { parseLeftoverData: true, parseSetupPackets: true }))}`);
+            console.log(`Wrote ${util.inspect(data)} ${util.inspect(server._protocolLayer.parsePacket(data, { parseLeftoverData: true, parseSetupPackets: true }), false, Infinity)}`);
         }
     });
 

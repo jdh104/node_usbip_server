@@ -9,7 +9,6 @@ class UsbIpLexicon {
         this.bmRequestTypes = new BmRequestTypes();
         this.bRequests = new BRequests();
         this.descriptorTypes = new DescriptorTypes();
-        this.usbSpecificationVersions = new UsbSpecificationVersions();
     }
 }
 
@@ -88,6 +87,14 @@ class BmRequestRecipients {
 
 class BRequests {
     constructor() {
+        this.standard = new StandardBRequests();
+        this.class = new ClassBRequests();
+        this.vendor = new VendorBRequests();
+    }
+}
+
+class StandardBRequests {
+    constructor() {
         this.getStatus = 0x00;
         this.clearFeature = 0x01;
         this.setFeature = 0x03;
@@ -102,6 +109,24 @@ class BRequests {
     }
 }
 
+class ClassBRequests {
+    constructor() {
+        this.hid = new HidClassBRequests();
+    }
+}
+
+class HidClassBRequests {
+    constructor() {
+        this.setIdle = 0x0b;
+    }
+}
+
+class VendorBRequests {
+    constructor() {
+
+    }
+}
+
 class DescriptorTypes {
     constructor() {
         this.device = 0x01 << 8;
@@ -109,12 +134,6 @@ class DescriptorTypes {
         this.string = 0x03 << 8;
         this.interface = 0x04 << 8;
         this.endpoint = 0x05 << 8;
-    }
-}
-
-class UsbSpecificationVersions {
-    constructor() {
-        this.v2_0 = 0x0200;
     }
 }
 
