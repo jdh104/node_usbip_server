@@ -9,6 +9,7 @@ class UsbIpLexicon {
         this.bmRequestTypes = new BmRequestTypes();
         this.bRequests = new BRequests();
         this.descriptorTypes = new DescriptorTypes();
+        this.interfaceClasses = new InterfaceClasses();
     }
 }
 
@@ -104,7 +105,7 @@ class StandardBRequests {
         this.getConfiguration = 0x08;
         this.setConfiguration = 0x09;
         this.getInterface = 0x0a;
-        this.setInterface = 0x11;
+        this.setInterface = 0x0b;
         this.synchFrame = 0x12;
     }
 }
@@ -117,7 +118,7 @@ class ClassBRequests {
 
 class HidClassBRequests {
     constructor() {
-        this.setIdle = 0x0b;
+        this.setIdle = 0x0a;
     }
 }
 
@@ -129,11 +130,17 @@ class VendorBRequests {
 
 class DescriptorTypes {
     constructor() {
-        this.device = 0x01 << 8;
-        this.config = 0x02 << 8;
-        this.string = 0x03 << 8;
-        this.interface = 0x04 << 8;
-        this.endpoint = 0x05 << 8;
+        this.device = 0x01;
+        this.config = 0x02;
+        this.string = 0x03;
+        this.interface = 0x04;
+        this.endpoint = 0x05;
+    }
+}
+
+class InterfaceClasses {
+    constructor() {
+        this.hid = 0x03;
     }
 }
 
