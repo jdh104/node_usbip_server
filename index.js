@@ -3,8 +3,10 @@
 
 const ASCII_ENCODED_ZERO = Buffer.from([0]).toString('ASCII');
 const DEFAULT_SIMULATED_BUS_NUMBER = 8;
+const ENGLISH = 0x0409;
 const EMPTY_BUFFER = Buffer.alloc(0);
 const EMPTY_SETUP_PACKET_BYTES = Buffer.alloc(8);
+const UNICODE = 'utf16le';
 const USBIP_SERVICE_PORT = 3240;
 
 const net = require('net');
@@ -248,11 +250,9 @@ class UsbIpServerSim extends EventEmitter {
         }
 
         if (!spec.supportedLangs) {
-            spec.supportedLangs = Buffer.from([0x04, 0x09]); // default: English
-        } else if (!Buffer.isBuffer(spec.supportedLangs)) {
-            throw new Error(`'supportedLangs' must be of type: Buffer`);
-        } else if (spec.supportedLangs.length % 2 != 0) {
-            throw new Error(`'supportedLangs' buffer must have even length (language codes are two bytes each)`);
+            spec.supportedLangs = [ENGLISH];
+        } else if (Object.getPrototypeOf(spec.supportedLangs) != Array.prototype) {
+            throw new Error(`'supportedLangs' must be of type: Array`);
         }
     }
 
@@ -564,6 +564,11 @@ class UsbIpProtocolLayer extends EventEmitter {
 
                 matchingDevice._attachedSocket = socket;
                 matchingDevice.on('interrupt', (interrupt, data) => this.handleDeviceInterrupt(matchingDevice, interrupt, data));
+                matchingDevice.emit('attached');
+                matchingDevice._attachedSocket.on('close', hadError => {
+                    matchingDevice._attachedSocket = null;
+                    matchingDevice.emit('detached');
+                });
             } else {
                 // TODO: device is already attached; send error response
                 this.notifyAndWriteData(socket, this.constructImportResponse(serverVersion, null, false));
@@ -595,7 +600,7 @@ class UsbIpProtocolLayer extends EventEmitter {
                     let transferType = lib.transferTypes.control;
 
                     if (body.header.endpoint) {
-                        let endpoint = this.server.getEndpoint(targetDevice, body.header.endpoint);
+                        let endpoint = targetDevice._findEndpoint(null, body.header.endpoint);
                         transferType = endpoint.bmAttributes.transferType;
                     }
 
@@ -620,7 +625,7 @@ class UsbIpProtocolLayer extends EventEmitter {
                             throw new Error(`Unrecognized endpoint; known endpoints = ${util.inspect(lib.transferTypes)}`);
                     }
                 } catch (err) {
-                    this.error(new Error(`Unable to handle submit command to endpoint '${body.header.endpoint}'. Reason = ${err}`));
+                    this.error(new Error(`Unable to handle submit command to endpoint '${body.header.endpoint}'. Reason = ${util.inspect(err)}`));
                 }
             }
 
@@ -903,6 +908,8 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {ParsedSetupBytes} setup
      */
     handleStandardInterfaceControlPacketBody(targetDevice, body, setup) {
+        let iface = targetDevice._findIface(null, setup.wIndex);
+
         switch (setup.bRequest) {
             case lib.bRequests.standard.getStatus:
                 return this.handleInterfaceGetStatusPacket(targetDevice, setup);
@@ -917,7 +924,12 @@ class UsbIpProtocolLayer extends EventEmitter {
                 throw new Error('Unsupported Request: According to the spec, bRequest.SET_ADDRESS cannot be requested at the INTERFACE level');
 
             case lib.bRequests.standard.getDescriptor:
-                throw new Error('Unsupported Request: According to the spec, bRequest.GET_DESCRIPTOR cannot be requested at the INTERFACE level');
+                if (iface && (iface.bInterfaceClass == lib.interfaceClasses.hid) && (setup.wValue >> 8 == 0x22) && ((setup.wValue & 0xff) == 0)) {
+                    // unclear if this is actually how this should be handled, but im pretty sure this is the GET_HID_REPORT request
+                    return this.handleGetHidReportDescriptorPacket(iface);
+                } else {
+                    throw new Error('Unsupported Request: According to the spec, bRequest.GET_DESCRIPTOR cannot be requested at the INTERFACE level');
+                }
 
             case lib.bRequests.standard.setDescriptor:
                 throw new Error('Unsupported Request: According to the spec, bRequest.SET_DESCRIPTOR cannot be requested at the INTERFACE level');
@@ -936,10 +948,6 @@ class UsbIpProtocolLayer extends EventEmitter {
 
             case lib.bRequests.standard.synchFrame:
                 throw new Error('Unsupported Request: According to the spec, bRequest.SYNCH_FRAME cannot be requested at the INTERFACE level');
-
-            case lib.bRequests.class.hid.setIdle:
-                this.emit('error', new Error(`Receieved "Standard" request with rType ${setup.bRequest}; which MIGHT actually by an HID SET_IDLE request. Sending empty data buffer as response.`));
-                return EMPTY_BUFFER;
 
             default:
                 throw new Error(`Unrecognized bRequest '${setup.bRequest}'; known bRequests = ${util.inspect(lib.bRequests)}`);
@@ -1087,10 +1095,30 @@ class UsbIpProtocolLayer extends EventEmitter {
      */
     handleGetStringDescriptorPacket(targetDevice, setup, descriptorIndex) {
         if (!descriptorIndex) {
-            return this.constructStringDescriptor(targetDevice.spec.supportedLangs);
+            return this.constructSupportedLangsDescriptor(targetDevice.spec.supportedLangs);
         } else {
             return this.constructStringDescriptorFromString(targetDevice.spec.stringDescriptors[descriptorIndex - 1]);
         }
+    }
+
+    /**
+     * 
+     * @param {number[]} supportedLangs
+     */
+    constructSupportedLangsDescriptor(supportedLangs) {
+        return this.constructStringDescriptor(Buffer.concat(supportedLangs.map(langCode => {
+            let langBuf = Buffer.allocUnsafe(2);
+            langBuf.writeUInt16LE(langCode);
+            return langBuf;
+        })));
+    }
+
+    /**
+     * 
+     * @param {string} descriptor
+     */
+    constructStringDescriptorFromString(descriptor) {
+        return this.constructStringDescriptor(Buffer.from(descriptor, UNICODE));
     }
 
     /**
@@ -1109,14 +1137,6 @@ class UsbIpProtocolLayer extends EventEmitter {
                 descriptorBytes,
             ]
         );
-    }
-
-    /**
-     * 
-     * @param {string} descriptor
-     */
-    constructStringDescriptorFromString(descriptor) {
-        return this.constructStringDescriptor(Buffer.from(descriptor, 'utf-8'));
     }
     
     /**
@@ -1165,7 +1185,7 @@ class UsbIpProtocolLayer extends EventEmitter {
      */
     handleSetConfigurationPacket(targetDevice, setup) {
         targetDevice.spec.bConfigurationValue = setup.wValue;
-        return EMPTY_BUFFER; // no data required to be sent back
+        return EMPTY_BUFFER;
     }
     
     /**
@@ -1203,6 +1223,19 @@ class UsbIpProtocolLayer extends EventEmitter {
         }
 
         return EMPTY_BUFFER;
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDeviceInterface} iface
+     */
+    handleGetHidReportDescriptorPacket(iface) {
+        if (!iface.hidDescriptor || !iface.hidDescriptor.preCompiledReport) {
+            this.emit('error', new Error('given interface has no hidDescriptor.preCompiledReport'));
+            return Buffer.alloc(0);
+        } else {
+            return iface.hidDescriptor.preCompiledReport;
+        }
     }
     
     /**
@@ -1245,7 +1278,7 @@ class UsbIpProtocolLayer extends EventEmitter {
         if (!interrupt) {
             sender._piops.enqueue(data);
         } else {
-            this.notifyAndWriteData(targetDevice._attachedSocket, this.constructInterruptResponse(interrupt, data));
+            this.notifyAndWriteData(sender._attachedSocket, this.constructInterruptResponse(interrupt, data));
         }
     }
 
@@ -2404,27 +2437,6 @@ class UsbIpServer extends net.Server {
 
         return this.getDeviceWith(device => device.spec.busnum == busNum && device.spec.devnum == devNum);
     }
-
-    /**
-     * 
-     * @param {SimulatedUsbDevice} device
-     * @param {number} endpointNumberQuery
-     */
-    getEndpoint(device, endpointNumberQuery) {
-        for (let config of device.spec.configurations) {
-            if (config.bConfigurationValue == device.spec.bConfigurationValue) {
-                for (let iface of config.interfaces) {
-                    for (let endpoint of iface.endpoints) {
-                        if (endpoint.bEndpointAddress.endpointNumber == endpointNumberQuery) {
-                            return endpoint;
-                        }
-                    }
-                }
-            }
-        }
-
-        throw new Error(`The device's current configuration does not contain an endpoint numbered '${endpointNumberQuery}'`);
-    }
 }
 
 /**
@@ -2448,7 +2460,7 @@ class UsbIpServer extends net.Server {
  * @property {number} iSerialNumber
  * @property {number} [bNumConfigurations]
  * @property {SimulatedUsbDeviceConfiguration[]} configurations
- * @property {Buffer} [supportedLangs]
+ * @property {number[]} [supportedLangs]
  * @property {string[]} [stringDescriptors]
  */
 
@@ -2521,6 +2533,21 @@ class UsbIpServer extends net.Server {
 /** */
 class SimulatedUsbDevice extends EventEmitter {
     /**
+     * Event fired when the device is attached by a usbip client
+     * 
+     * @event SimulatedUsbDevice#attached
+     * @type {object}
+     * 
+     */
+
+    /**
+     * Event fired when the device is detached by a usbip client
+     * 
+     * @event SimulatedUsbDevice#detached
+     * @type {object}
+     */
+
+    /**
      * Event fired when the device writes an interrupt packet
      * 
      * @event SimulatedUsbDevice#interrupt
@@ -2586,6 +2613,22 @@ class SimulatedUsbDevice extends EventEmitter {
             }
         } else {
             return config.interfaces.find(iface => iface.bInterfaceNumber == ifaceQuery);
+        }
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDeviceInterface} iface
+     * @param {number} endpointNumberQuery
+     * @returns {SimulatedUsbDeviceEndpoint}
+     */
+    _findEndpoint(iface, endpointNumberQuery) {
+        if (!iface) {
+            return this._findEndpoint(this._findIface() || {}, endpointNumberQuery);
+        } else if (!endpointNumberQuery) {
+            return iface.endpoints.find(ep => !!ep);
+        } else {
+            return iface.endpoints.find(ep => ep.bEndpointAddress.endpointNumber == endpointNumberQuery);
         }
     }
 
@@ -2707,7 +2750,7 @@ if (!module.parent) {
                                 bmAttributes: {
                                     transferType: lib.transferTypes.interrupt,
                                 },
-                                wMaxPacketSize: 8,
+                                wMaxPacketSize: 5,
                                 bInterval: 0x0a,
                             },
                         ],
@@ -2715,19 +2758,45 @@ if (!module.parent) {
                 ],
             },
         ],
-        supportedLangs: Buffer.from([0x04, 0x09]), // english only
+        supportedLangs: [0x0409], // english only
         stringDescriptors: [
-            'Dell',                  // descriptor 1
-            'Optical Wheel Mouse',   // descriptor 2
-            'Default Configuration', // descriptor 3
-            'Default Interface',     // descriptor 4
+            'Dell',                   // descriptor 1
+            'Dell USB Optical Mouse', // descriptor 2
+            'Default Configuration',  // descriptor 3
+            'Default Interface',      // descriptor 4
         ],
+    });
+
+    let closure = { x: 10, y: -5, xDirection: 1, yDirection: -2, buf: Buffer.alloc(4) };
+
+    const LIMIT = 20;
+    mouseDevice.on('attached', () => {
+        console.log(`attached, will begin sending interrupts in 5 seconds`);
+        setTimeout(() => {
+            setInterval(() => {
+                closure.x += closure.xDirection;
+                closure.y += closure.yDirection;
+
+                if (Math.abs(closure.x) >= LIMIT) {
+                    closure.xDirection *= -1;
+                }
+
+                if (Math.abs(closure.y) >= LIMIT) {
+                    closure.yDirection *= -1;
+                }
+
+                closure.buf.writeInt8(closure.x, 1);
+                closure.buf.writeInt8(closure.y, 2);
+
+                mouseDevice.interrupt(closure.buf);
+            }, 40);
+        }, 5000);
     });
 
     //server.exportDevice(scannerDevice);
     server.exportDevice(mouseDevice);
 
-    server.listen('0.0.0.0');
+    server.listen('127.0.8.8');
 
     //collectTestData();
 }

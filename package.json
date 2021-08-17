@@ -5,5 +5,8 @@
   "main": "index.js",
   "author": {
     "name": "Jonah D. Haney"
+  },
+  "scripts": {
+    "build-example": "nexe -t x64-12.9.1 -o MouseSimulator.exe -r node_modules\\**\\*.js app.js && mkdir build & for /r %i in (*.node) do xcopy /Y \"%i\" build"
   }
 }

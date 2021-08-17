@@ -43,7 +43,7 @@ class Queue {
             this._head = this._head.next;
             this._tail = this._head && this._tail;
 
-            count--;
+            this.count--;
             return result.val;
         }
     }
