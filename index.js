@@ -203,8 +203,20 @@ class UsbIpServerSim extends EventEmitter {
      * @param {number} defaultDeviceNumber
      */
     _normalizeDeviceSpec(spec, defaultDeviceNumber) {
-        if (!spec.bcdUSB) {
-            spec.bcdUSB = '0';
+        for (let requiredPropertyName of [
+            'speed',
+            'idVendor',
+            'idProduct',
+            'bcdDevice',
+            'bcdUSB',
+            'bDeviceClass',
+            'bDeviceSubClass',
+            'bDeviceProtocol',
+            'bMaxPacketSize0',
+        ]) {
+            if (spec[requiredPropertyName] == null) {
+                throw new Error(`SimulatedUsbDeviceSpec requires a value for property name '${requiredPropertyName}'`);
+            }
         }
 
         if (!spec.busnum) {
@@ -221,7 +233,7 @@ class UsbIpServerSim extends EventEmitter {
 
         if (!spec.path) {
             // TODO: version formatted as 'something.major.minor.revision'?
-            let usbSpecMajorVersion = spec.bcdUSB.split('.').slice(-3, -2)[0] || '0';
+            let usbSpecMajorVersion = (spec.bcdUSB || '0.0.0').split('.').slice(-3, -2)[0] || '0';
             spec.path = posix.join(this._server.devicesDirectory, `usb${usbSpecMajorVersion}`, spec.busid);
         }
 
@@ -254,6 +266,8 @@ class UsbIpServerSim extends EventEmitter {
         } else if (Object.getPrototypeOf(spec.supportedLangs) != Array.prototype) {
             throw new Error(`'supportedLangs' must be of type: Array`);
         }
+
+        if (!spec.bConfigurationValue) spec.bConfigurationValue = 0;
     }
 
     /**
@@ -262,6 +276,24 @@ class UsbIpServerSim extends EventEmitter {
      * @param {number} defaultConfigNumber
      */
     _normalizeDeviceConfig(config, defaultConfigNumber) {
+        for (let requiredPropertyName of [
+            'bmAttributes',
+            'bMaxPower',
+        ]) {
+            if (config[requiredPropertyName] == null) {
+                throw new Error(`SimulatedUsbDeviceConfiguration requires a value for property name '${requiredPropertyName}'`);
+            }
+        }
+
+        for (let requiredPropertyName of [
+            'selfPowered',
+            'remoteWakeup',
+        ]) {
+            if (config.bmAttributes[requiredPropertyName] == null) {
+                throw new Error(`SimulatedUsbDeviceConfiguration.bmAttributes requires a value for property name '${requiredPropertyName}'`);
+            }
+        }
+
         if (config.bConfigurationValue == null) {
             config.bConfigurationValue = defaultConfigNumber;
         }
@@ -295,13 +327,23 @@ class UsbIpServerSim extends EventEmitter {
      * @param {number} defaultIfaceNumber
      */
     _normalizeDeviceInterface(iface, defaultIfaceNumber) {
+        for (let requiredPropertyName of [
+            'bInterfaceClass',
+            'bInterfaceSubClass',
+            'bInterfaceProtocol',
+        ]) {
+            if (iface[requiredPropertyName] == null) {
+                throw new Error(`SimulatedUsbDeviceInterface requires a value for property name '${requiredPropertyName}'`);
+            }
+        }
+
         if (iface.bInterfaceClass == lib.interfaceClasses.hid) {
             if (!iface.hidDescriptor) {
                 throw new Error(`Device interface '${iface.bInterfaceNumber}' with { bInterfaceClass = ${iface.bInterfaceClass} (HID) } requires 'hidDescriptor'`);
             } else if (!iface.hidDescriptor.preCompiledReport && !iface.hidDescriptor.report) {
                 throw new Error(`'hidDescriptor' of interface '${iface.bInterfaceNumber}' must have either an HID Report Descriptor at property 'report', or a Buffer at property 'preCompiledReport'`);
             } else if (!iface.hidDescriptor.preCompiledReport && iface.hidDescriptor.report) {
-                throw new Error(`'hidDescriptor' of interface '${iface.bInterfaceNumber}' has unsupported 'report' property`);
+                throw new Error(`'hidDescriptor' of interface '${iface.bInterfaceNumber}' has unsupported 'report' property ('preCompiledReport' must be used instead)`);
             } else if (!Buffer.isBuffer(iface.hidDescriptor.preCompiledReport)) {
                 throw new Error(`'hidDescriptor' of interface '${iface.bInterfaceNumber}' must have 'preCompiledReport' property with type: Buffer`);
             }
@@ -327,6 +369,7 @@ class UsbIpServerSim extends EventEmitter {
             iface.bNumEndpoints = iface.endpoints.length;
         }
 
+        if (typeof iface.bAlternateSetting != typeof 0) iface.bAlternateSetting = 0;
         if (typeof iface.iInterface != typeof 0) iface.iInterface = 0;
         if (typeof iface.isIdle != typeof false) iface.isIdle = false;
     }
@@ -336,13 +379,40 @@ class UsbIpServerSim extends EventEmitter {
      * @param {SimulatedUsbDeviceEndpoint} endpoint
      * @param {number} defaultEndpointNumber
      */
-    _normalizeDeviceEndpoint(endpoint, defaultEndpointNumber) {
-        if (!endpoint.bEndpointAddress) endpoint.bEndpointAddress = {};
-        if (!endpoint.bmAttributes) endpoint.bmAttributes = {};
-
-        if (!endpoint.bEndpointAddress.endpointNumber) {
-            endpoint.bEndpointAddress.endpointNumber = defaultEndpointNumber;
+    _normalizeDeviceEndpoint(endpoint, defaultEndpointNumber, allowEmptyIsoProperties) {
+        for (let requiredPropertyName of [
+            'bEndpointAddress',
+            'bmAttributes',
+            'wMaxPacketSize',
+            'bInterval',
+        ]) {
+            if (endpoint[requiredPropertyName] == null) {
+                throw new Error(`SimulatedUsbDeviceEndpoint requires a value for property name '${requiredPropertyName}'`);
+            }
         }
+
+        for (let requiredIsoPropertyName of [
+            'synchronisationType',
+            'usageType',
+        ]) {
+            if (endpoint.bmAttributes[requiredIsoPropertyName] == null) {
+                if (endpoint.bmAttributes.transferType != lib.transferTypes.isochronous) {
+                    endpoint.bmAttributes[requiredIsoPropertyName] = 0;
+                } else {
+                    throw new Error(`SimulatedUsbDeviceEndpoint.bmAttributes requires a value for property name '${requiredIsoPropertyName}' because 'bmAttributes.transferType' is ${endpoint.bmAttributes.transferType} (isochronous)`);
+                }
+            }
+        }
+
+        if (endpoint.bmAttributes.transferType == null) {
+            throw new Error(`SimulatedUsbDeviceEndpoint.bmAttributes requires a value for property name 'transferType'`);
+        }
+
+        if (!(endpoint.bEndpointAddress.direction === 0 || endpoint.bEndpointAddress.direction === 1)) {
+            throw new Error(`SimulatedUsbDeviceEndpoint.bEndpointAddress.direction must be '0' or '1'`);
+        }
+
+        if (!endpoint.bEndpointAddress.endpointNumber) endpoint.bEndpointAddress.endpointNumber = defaultEndpointNumber;
     }
 
     /**
@@ -564,8 +634,10 @@ class UsbIpProtocolLayer extends EventEmitter {
 
                 matchingDevice._attachedSocket = socket;
                 matchingDevice.on('interrupt', (interrupt, data) => this.handleDeviceInterrupt(matchingDevice, interrupt, data));
+                matchingDevice._piops = new Queue(); // this handles any interruptOuts that are leftover if the device was detached then re-attached
                 matchingDevice.emit('attached');
                 matchingDevice._attachedSocket.on('close', hadError => {
+                    matchingDevice._piips = new Queue(); // unregister pending interruptIns
                     matchingDevice._attachedSocket = null;
                     matchingDevice.emit('detached');
                 });
@@ -2454,10 +2526,10 @@ class UsbIpServer extends net.Server {
  * @property {number} bDeviceSubClass
  * @property {number} bDeviceProtocol
  * @property {8 | 16 | 32 | 64} bMaxPacketSize0 Maximum packet size for Endpoint zero
- * @property {number} bConfigurationValue
- * @property {number} iManufacturer
- * @property {number} iProduct
- * @property {number} iSerialNumber
+ * @property {number} [bConfigurationValue]
+ * @property {number} [iManufacturer]
+ * @property {number} [iProduct]
+ * @property {number} [iSerialNumber]
  * @property {number} [bNumConfigurations]
  * @property {SimulatedUsbDeviceConfiguration[]} configurations
  * @property {number[]} [supportedLangs]
@@ -2484,14 +2556,14 @@ class UsbIpServer extends net.Server {
 /**
  * @typedef SimulatedUsbDeviceInterface
  * @property {number} [bInterfaceNumber]
- * @property {number} bAlternateSetting
+ * @property {number} [bAlternateSetting]
  * @property {number} bInterfaceClass
  * @property {number} bInterfaceSubClass
  * @property {number} bInterfaceProtocol
  * @property {SimulatedUsbDeviceHidDescriptor} [hidDescriptor] Only necessary if device is class HID
  * @property {number} [bNumEndpoints]
  * @property {SimulatedUsbDeviceEndpoint[]} [endpoints]
- * @property {number} iInterface
+ * @property {number} [iInterface]
  * @property {boolean} [isIdle]
  */
 
@@ -2526,8 +2598,8 @@ class UsbIpServer extends net.Server {
 /**
  * @typedef EndpointAttributes
  * @property {number} transferType
- * @property {number} [synchronisationType] ISO mode only
- * @property {number} [usageType] ISO mode only
+ * @property {number} [synchronisationType] required only for isochronous transferType
+ * @property {number} [usageType] required only for isochronous transferType
  */
 
 /** */
@@ -2705,6 +2777,7 @@ if (!module.parent) {
     let mouseDevice = new SimulatedUsbDevice({
         bcdDevice: 17153,
         bcdUSB: '2.0.0',
+        speed: 3,
         idVendor: 16700,
         idProduct: 12306,
         bDeviceClass: 0,
