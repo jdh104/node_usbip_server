@@ -1,0 +1,4485 @@
+2021-08-25T19:13:27.260Z -> {
+  version: '1.1.1',
+  commandCode: 'OP_REQ_DEVLIST',
+  body: { status: 0 }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:27.297Z <- {
+  version: '1.1.1',
+  commandCode: 'OP_REP_DEVLIST',
+  body: {
+    status: 0,
+    deviceListLength: 1,
+    deviceList: [
+      {
+        path: '\\\\?\\usb#vid_03f0&pid_0339#s#n_vnc8030217#{fb265267-c609-41e6-8eca-a20d92a833e6}',
+        busid: '1-159',
+        busnum: 1,
+        devnum: 159,
+        speed: 3,
+        idVendor: 1008,
+        idProduct: 825,
+        bcdDevice: 0,
+        bDeviceClass: 2,
+        bDeviceSubClass: 0,
+        bDeviceProtocol: 0,
+        bConfigurationValue: 0,
+        bNumConfigurations: 0,
+        bNumInterfaces: 0,
+        interfaces: []
+      }
+    ]
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.142Z -> {
+  version: '1.1.1',
+  commandCode: 'OP_REQ_IMPORT',
+  body: { status: 0, busid: '1-159' }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.160Z <- {
+  version: '1.1.1',
+  commandCode: 'OP_REP_IMPORT',
+  body: {
+    status: 0,
+    device: {
+      path: '\\\\?\\usb#vid_03f0&pid_0339#s#n_vnc8030217#{fb265267-c609-41e6-8eca-a20d92a833e6}',
+      busid: '1-159',
+      busnum: 1,
+      devnum: 159,
+      speed: 3,
+      idVendor: 1008,
+      idProduct: 825,
+      bcdDevice: 0,
+      bDeviceClass: 2,
+      bDeviceSubClass: 0,
+      bDeviceProtocol: 0,
+      bConfigurationValue: 0,
+      bNumConfigurations: 0,
+      bNumInterfaces: 0
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.216Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.218Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.219Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 256,
+      wIndex: 0,
+      wLength: 18
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.221Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 12 01 00 02 02 00 00 40 f0 03 39 03 05 01 01 02 03 01>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.222Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.223Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.225Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 67
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.226Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8 09 04 00 00 01 02 02 01 05 05 24 00 10 01 04 24 02 02 05 24 06 00 01 05 24 01 03 01 07 05 81 03 10 00 01 09 04 01 00 02 0a ... 17 more bytes>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.332Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.335Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.382Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.385Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.387Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.389Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.392Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 770,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.394Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 36,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 24 03 48 00 50 00 20 00 49 00 6d 00 61 00 67 00 65 00 72 00 20 00 53 00 63 00 61 00 6e 00 6e 00 65 00 72 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.403Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.406Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.408Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.410Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.413Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:13:41.416Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:27.156Z -> {
+  version: '1.1.1',
+  commandCode: 'OP_REQ_IMPORT',
+  body: { status: 0, busid: '1-159' }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:27.214Z <- {
+  version: '1.1.1',
+  commandCode: 'OP_REP_IMPORT',
+  error: Error: Failed to read operation 'OP_REP_IMPORT' body. Reason = 'Error: Import request body must be at least 316 bytes long'
+      at UsbIpProtocolLayer.readOperationBody (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:1680:19)
+      at UsbIpProtocolLayer.parsePacket (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:1386:46)
+      at collectTestData (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:2884:68)
+      at Object.<anonymous> (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:2874:5)
+      at Module._compile (internal/modules/cjs/loader.js:996:14)
+      at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+      at Module.load (internal/modules/cjs/loader.js:863:32)
+      at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+      at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)
+      at internal/main/run_main_module.js:17:47
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:36.928Z -> {
+  version: '1.1.1',
+  commandCode: 'OP_REQ_DEVLIST',
+  body: { status: 0 }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:36.963Z <- {
+  version: '1.1.1',
+  commandCode: 'OP_REP_DEVLIST',
+  body: {
+    status: 0,
+    deviceListLength: 1,
+    deviceList: [
+      {
+        path: '\\\\?\\usb#vid_03f0&pid_0339#s#n_vnc8030217#{fb265267-c609-41e6-8eca-a20d92a833e6}',
+        busid: '1-159',
+        busnum: 1,
+        devnum: 159,
+        speed: 3,
+        idVendor: 1008,
+        idProduct: 825,
+        bcdDevice: 0,
+        bDeviceClass: 2,
+        bDeviceSubClass: 0,
+        bDeviceProtocol: 0,
+        bConfigurationValue: 0,
+        bNumConfigurations: 0,
+        bNumInterfaces: 0,
+        interfaces: []
+      }
+    ]
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:39.706Z -> {
+  version: '1.1.1',
+  commandCode: 'OP_REQ_IMPORT',
+  body: { status: 0, busid: '1-159' }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:39.759Z <- {
+  version: '1.1.1',
+  commandCode: 'OP_REP_IMPORT',
+  error: Error: Failed to read operation 'OP_REP_IMPORT' body. Reason = 'Error: Import request body must be at least 316 bytes long'
+      at UsbIpProtocolLayer.readOperationBody (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:1680:19)
+      at UsbIpProtocolLayer.parsePacket (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:1386:46)
+      at collectTestData (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:2884:68)
+      at Object.<anonymous> (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:2874:5)
+      at Module._compile (internal/modules/cjs/loader.js:996:14)
+      at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+      at Module.load (internal/modules/cjs/loader.js:863:32)
+      at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+      at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)
+      at internal/main/run_main_module.js:17:47
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:41.162Z -> {
+  version: '1.1.1',
+  commandCode: 'OP_REQ_IMPORT',
+  body: { status: 0, busid: '1-159' }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:41.211Z <- {
+  version: '1.1.1',
+  commandCode: 'OP_REP_IMPORT',
+  error: Error: Failed to read operation 'OP_REP_IMPORT' body. Reason = 'Error: Import request body must be at least 316 bytes long'
+      at UsbIpProtocolLayer.readOperationBody (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:1680:19)
+      at UsbIpProtocolLayer.parsePacket (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:1386:46)
+      at collectTestData (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:2884:68)
+      at Object.<anonymous> (C:\Users\haneyjx\source\repos\node_usbip_server\index.js:2874:5)
+      at Module._compile (internal/modules/cjs/loader.js:996:14)
+      at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+      at Module.load (internal/modules/cjs/loader.js:863:32)
+      at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+      at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)
+      at internal/main/run_main_module.js:17:47
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:41.923Z -> {
+  version: '1.1.1',
+  commandCode: 'OP_REQ_IMPORT',
+  body: { status: 0, busid: '1-159' }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:41.944Z <- {
+  version: '1.1.1',
+  commandCode: 'OP_REP_IMPORT',
+  body: {
+    status: 0,
+    device: {
+      path: '\\\\?\\usb#vid_03f0&pid_0339#s#n_vnc8030217#{fb265267-c609-41e6-8eca-a20d92a833e6}',
+      busid: '1-159',
+      busnum: 1,
+      devnum: 159,
+      speed: 3,
+      idVendor: 1008,
+      idProduct: 825,
+      bcdDevice: 0,
+      bDeviceClass: 2,
+      bDeviceSubClass: 0,
+      bDeviceProtocol: 0,
+      bConfigurationValue: 0,
+      bNumConfigurations: 0,
+      bNumInterfaces: 0
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.013Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.018Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.020Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 256,
+      wIndex: 0,
+      wLength: 18
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.023Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 12 01 00 02 02 00 00 40 f0 03 39 03 05 01 01 02 03 01>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.026Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.033Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.036Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 67
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.041Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8 09 04 00 00 01 02 02 01 05 05 24 00 10 01 04 24 02 02 05 24 06 00 01 05 24 01 03 01 07 05 81 03 10 00 01 09 04 01 00 02 0a ... 17 more bytes>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.140Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.141Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.190Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.192Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.195Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.200Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.202Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 770,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.204Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 36,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 24 03 48 00 50 00 20 00 49 00 6d 00 61 00 67 00 65 00 72 00 20 00 53 00 63 00 61 00 6e 00 6e 00 65 00 72 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.210Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.211Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.212Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.213Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.216Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:16:42.219Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.647Z -> {
+  version: '1.1.1',
+  commandCode: 'OP_REQ_IMPORT',
+  body: { status: 0, busid: '1-159' }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.666Z <- {
+  version: '1.1.1',
+  commandCode: 'OP_REP_IMPORT',
+  body: {
+    status: 0,
+    device: {
+      path: '\\\\?\\usb#vid_03f0&pid_0339#s#n_vnc8030217#{fb265267-c609-41e6-8eca-a20d92a833e6}',
+      busid: '1-159',
+      busnum: 1,
+      devnum: 159,
+      speed: 3,
+      idVendor: 1008,
+      idProduct: 825,
+      bcdDevice: 0,
+      bDeviceClass: 2,
+      bDeviceSubClass: 0,
+      bDeviceProtocol: 0,
+      bConfigurationValue: 0,
+      bNumConfigurations: 0,
+      bNumInterfaces: 0
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.736Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.738Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.741Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 256,
+      wIndex: 0,
+      wLength: 18
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.743Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 12 01 00 02 02 00 00 40 f0 03 39 03 05 01 01 02 03 01>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.746Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.750Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.753Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 67
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.755Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8 09 04 00 00 01 02 02 01 05 05 24 00 10 01 04 24 02 02 05 24 06 00 01 05 24 01 03 01 07 05 81 03 10 00 01 09 04 01 00 02 0a ... 17 more bytes>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.860Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.863Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.910Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.913Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.915Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.917Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.921Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 770,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.924Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 36,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 24 03 48 00 50 00 20 00 49 00 6d 00 61 00 67 00 65 00 72 00 20 00 53 00 63 00 61 00 6e 00 6e 00 65 00 72 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.928Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.931Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.933Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.936Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.938Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.940Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.942Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 9, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: {
+          commandCode: 'USBIP_CMD_SUBMIT',
+          body: {
+            header: { seqnum: 10, devid: 65695, direction: 1, endpoint: 2 },
+            transferFlags: 0,
+            transferBufferLength: 4096,
+            startFrame: 0,
+            numberOfPackets: 0,
+            interval: 255,
+            setup: null,
+            transferBuffer: <Buffer >,
+            isoPacketDescriptor: <Buffer >,
+            leftoverData: {
+              commandCode: 'USBIP_CMD_SUBMIT',
+              body: {
+                header: { seqnum: 11, devid: 65695, direction: 1, endpoint: 2 },
+                transferFlags: 0,
+                transferBufferLength: 4096,
+                startFrame: 0,
+                numberOfPackets: 0,
+                interval: 255,
+                setup: null,
+                transferBuffer: <Buffer >,
+                isoPacketDescriptor: <Buffer >,
+                leftoverData: {
+                  commandCode: 'USBIP_CMD_SUBMIT',
+                  body: {
+                    header: {
+                      seqnum: 12,
+                      devid: 65695,
+                      direction: 0,
+                      endpoint: 0
+                    },
+                    transferFlags: 0,
+                    transferBufferLength: 7,
+                    startFrame: 0,
+                    numberOfPackets: 0,
+                    interval: 0,
+                    setup: {
+                      bmRequestType: { direction: 0, rType: 32, recipient: 1 },
+                      bRequest: 32,
+                      wValue: 0,
+                      wIndex: 0,
+                      wLength: 7
+                    },
+                    transferBuffer: <Buffer 80 25 00 00 00 00 08>,
+                    isoPacketDescriptor: <Buffer >,
+                    leftoverData: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.943Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 12, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.945Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 13, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 32, recipient: 1 },
+      bRequest: 34,
+      wValue: 0,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:25.946Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 13, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:38.838Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:38.840Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 9, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:38.843Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 14, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 15, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:38.845Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 14, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:38.849Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 16, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:41.566Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 16, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:41.568Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 10, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:41.571Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 17, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 18, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:41.573Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 17, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:41.579Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 19, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:41.756Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 19, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:41.758Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 11, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 32,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 68 74 74 70 3a 2f 2f 63 6f 6b 65 75 72 6c 2e 63 6f 6d 2f 71 2f 32 30 31 37 2d 30 30 34 38 37 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:41.761Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 20, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 21, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:41.763Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 20, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:41.766Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 22, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:42.317Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 22, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:42.319Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 15, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:42.322Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 23, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 24, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:42.325Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 23, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:42.327Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 25, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:43.524Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 25, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:43.527Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 18, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:43.529Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 26, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 27, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:43.531Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 26, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:43.534Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 28, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:44.304Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 28, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:44.307Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 21, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:44.310Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 29, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 30, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:44.312Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 29, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:44.314Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 31, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:44.538Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 31, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:44.540Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 24, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 32,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 68 74 74 70 3a 2f 2f 63 6f 6b 65 75 72 6c 2e 63 6f 6d 2f 71 2f 32 30 31 37 2d 30 30 34 38 37 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:44.543Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 32, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 33, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:44.545Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 32, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:38:44.548Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 34, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:39:54.070Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 34, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:39:54.072Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 27, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:39:54.075Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 35, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 36, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:39:54.077Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 35, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:39:54.079Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 37, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:39:56.604Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 37, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:39:56.606Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 30, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:39:56.609Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 38, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 39, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:39:56.611Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 38, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:39:56.614Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 40, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:08.598Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 40, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:08.600Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 33, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:08.603Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 41, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 42, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:08.605Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 41, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:08.607Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 43, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:09.646Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 43, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:09.649Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 36, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:09.651Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 44, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 45, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:09.654Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 44, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:09.656Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 46, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:10.027Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 46, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:10.029Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 39, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 32,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 68 74 74 70 3a 2f 2f 63 6f 6b 65 75 72 6c 2e 63 6f 6d 2f 71 2f 32 30 31 37 2d 30 30 34 38 37 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:10.032Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 47, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 48, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:10.034Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 47, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:10.037Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 49, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:18.088Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 49, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:18.090Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 42, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:18.093Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 50, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 51, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:18.095Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 50, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:18.097Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 52, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:21.157Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 52, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:21.159Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 45, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:21.162Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 53, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 54, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:21.164Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 53, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:40:21.166Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 55, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:04.916Z -> {
+  version: '1.1.1',
+  commandCode: 'OP_REQ_IMPORT',
+  body: { status: 0, busid: '1-159' }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:04.935Z <- {
+  version: '1.1.1',
+  commandCode: 'OP_REP_IMPORT',
+  body: {
+    status: 0,
+    device: {
+      path: '\\\\?\\usb#vid_03f0&pid_0339#s#n_vnc8030217#{fb265267-c609-41e6-8eca-a20d92a833e6}',
+      busid: '1-159',
+      busnum: 1,
+      devnum: 159,
+      speed: 3,
+      idVendor: 1008,
+      idProduct: 825,
+      bcdDevice: 0,
+      bDeviceClass: 2,
+      bDeviceSubClass: 0,
+      bDeviceProtocol: 0,
+      bConfigurationValue: 0,
+      bNumConfigurations: 0,
+      bNumInterfaces: 0
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.006Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.008Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.010Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 256,
+      wIndex: 0,
+      wLength: 18
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.013Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 12 01 00 02 02 00 00 40 f0 03 39 03 05 01 01 02 03 01>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.015Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.018Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.020Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 67
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.025Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8 09 04 00 00 01 02 02 01 05 05 24 00 10 01 04 24 02 02 05 24 06 00 01 05 24 01 03 01 07 05 81 03 10 00 01 09 04 01 00 02 0a ... 17 more bytes>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.127Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.130Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.178Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.180Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.182Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.185Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.187Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 770,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.189Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 36,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 24 03 48 00 50 00 20 00 49 00 6d 00 61 00 67 00 65 00 72 00 20 00 53 00 63 00 61 00 6e 00 6e 00 65 00 72 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.196Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.199Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.201Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.203Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.206Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.212Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.215Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 9, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: {
+          commandCode: 'USBIP_CMD_SUBMIT',
+          body: {
+            header: { seqnum: 10, devid: 65695, direction: 1, endpoint: 2 },
+            transferFlags: 0,
+            transferBufferLength: 4096,
+            startFrame: 0,
+            numberOfPackets: 0,
+            interval: 255,
+            setup: null,
+            transferBuffer: <Buffer >,
+            isoPacketDescriptor: <Buffer >,
+            leftoverData: {
+              commandCode: 'USBIP_CMD_SUBMIT',
+              body: {
+                header: { seqnum: 11, devid: 65695, direction: 1, endpoint: 2 },
+                transferFlags: 0,
+                transferBufferLength: 4096,
+                startFrame: 0,
+                numberOfPackets: 0,
+                interval: 255,
+                setup: null,
+                transferBuffer: <Buffer >,
+                isoPacketDescriptor: <Buffer >,
+                leftoverData: {
+                  commandCode: 'USBIP_CMD_SUBMIT',
+                  body: {
+                    header: {
+                      seqnum: 12,
+                      devid: 65695,
+                      direction: 0,
+                      endpoint: 0
+                    },
+                    transferFlags: 0,
+                    transferBufferLength: 7,
+                    startFrame: 0,
+                    numberOfPackets: 0,
+                    interval: 0,
+                    setup: {
+                      bmRequestType: { direction: 0, rType: 32, recipient: 1 },
+                      bRequest: 32,
+                      wValue: 0,
+                      wIndex: 0,
+                      wLength: 7
+                    },
+                    transferBuffer: <Buffer 80 25 00 00 00 00 08>,
+                    isoPacketDescriptor: <Buffer >,
+                    leftoverData: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.218Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 12, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.220Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 13, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 32, recipient: 1 },
+      bRequest: 34,
+      wValue: 0,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:41:05.222Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 13, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////// This is where the wireshark capture started //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2021-08-25T19:42:43.021Z -> {
+  version: '1.1.1',
+  commandCode: 'OP_REQ_IMPORT',
+  body: { status: 0, busid: '1-159' }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.040Z <- {
+  version: '1.1.1',
+  commandCode: 'OP_REP_IMPORT',
+  body: {
+    status: 0,
+    device: {
+      path: '\\\\?\\usb#vid_03f0&pid_0339#s#n_vnc8030217#{fb265267-c609-41e6-8eca-a20d92a833e6}',
+      busid: '1-159',
+      busnum: 1,
+      devnum: 159,
+      speed: 3,
+      idVendor: 1008,
+      idProduct: 825,
+      bcdDevice: 0,
+      bDeviceClass: 2,
+      bDeviceSubClass: 0,
+      bDeviceProtocol: 0,
+      bConfigurationValue: 0,
+      bNumConfigurations: 0,
+      bNumInterfaces: 0
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.101Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.103Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.106Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 256,
+      wIndex: 0,
+      wLength: 18
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.108Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 12 01 00 02 02 00 00 40 f0 03 39 03 05 01 01 02 03 01>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.111Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.113Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.115Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 67
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.119Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8 09 04 00 00 01 02 02 01 05 05 24 00 10 01 04 24 02 02 05 24 06 00 01 05 24 01 03 01 07 05 81 03 10 00 01 09 04 01 00 02 0a ... 17 more bytes>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.221Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.226Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.272Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.275Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.278Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.280Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.283Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 770,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.285Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 36,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 24 03 48 00 50 00 20 00 49 00 6d 00 61 00 67 00 65 00 72 00 20 00 53 00 63 00 61 00 6e 00 6e 00 65 00 72 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.290Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.292Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.299Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.301Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.304Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.307Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.315Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 9, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: {
+          commandCode: 'USBIP_CMD_SUBMIT',
+          body: {
+            header: { seqnum: 10, devid: 65695, direction: 1, endpoint: 2 },
+            transferFlags: 0,
+            transferBufferLength: 4096,
+            startFrame: 0,
+            numberOfPackets: 0,
+            interval: 255,
+            setup: null,
+            transferBuffer: <Buffer >,
+            isoPacketDescriptor: <Buffer >,
+            leftoverData: {
+              commandCode: 'USBIP_CMD_SUBMIT',
+              body: {
+                header: { seqnum: 11, devid: 65695, direction: 1, endpoint: 2 },
+                transferFlags: 0,
+                transferBufferLength: 4096,
+                startFrame: 0,
+                numberOfPackets: 0,
+                interval: 255,
+                setup: null,
+                transferBuffer: <Buffer >,
+                isoPacketDescriptor: <Buffer >,
+                leftoverData: {
+                  commandCode: 'USBIP_CMD_SUBMIT',
+                  body: {
+                    header: {
+                      seqnum: 12,
+                      devid: 65695,
+                      direction: 0,
+                      endpoint: 0
+                    },
+                    transferFlags: 0,
+                    transferBufferLength: 7,
+                    startFrame: 0,
+                    numberOfPackets: 0,
+                    interval: 0,
+                    setup: {
+                      bmRequestType: { direction: 0, rType: 32, recipient: 1 },
+                      bRequest: 32,
+                      wValue: 0,
+                      wIndex: 0,
+                      wLength: 7
+                    },
+                    transferBuffer: <Buffer 80 25 00 00 00 00 08>,
+                    isoPacketDescriptor: <Buffer >,
+                    leftoverData: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.318Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 12, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.321Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 13, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 32, recipient: 1 },
+      bRequest: 34,
+      wValue: 0,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:42:43.324Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 13, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:43:04.327Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:43:04.329Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 9, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:43:04.332Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 14, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 15, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:43:04.334Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 14, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:43:04.340Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 16, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:43:21.708Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 16, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:43:21.711Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 10, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:43:21.714Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 17, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 18, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:43:21.716Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 17, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:43:21.719Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 19, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.272Z -> {
+  version: '1.1.1',
+  commandCode: 'OP_REQ_IMPORT',
+  body: { status: 0, busid: '1-159' }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.291Z <- {
+  version: '1.1.1',
+  commandCode: 'OP_REP_IMPORT',
+  body: {
+    status: 0,
+    device: {
+      path: '\\\\?\\usb#vid_03f0&pid_0339#s#n_vnc8030217#{fb265267-c609-41e6-8eca-a20d92a833e6}',
+      busid: '1-159',
+      busnum: 1,
+      devnum: 159,
+      speed: 3,
+      idVendor: 1008,
+      idProduct: 825,
+      bcdDevice: 0,
+      bDeviceClass: 2,
+      bDeviceSubClass: 0,
+      bDeviceProtocol: 0,
+      bConfigurationValue: 0,
+      bNumConfigurations: 0,
+      bNumInterfaces: 0
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.354Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.356Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4294967047, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.359Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 256,
+      wIndex: 0,
+      wLength: 18
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.361Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 18,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 12 01 00 02 02 00 00 40 f0 03 39 03 05 01 01 02 03 01>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.365Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 9
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.367Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 16777224, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 9,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.369Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 512,
+      wIndex: 0,
+      wLength: 67
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.372Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 33554440, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 67,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 09 02 43 00 02 01 04 80 c8 09 04 00 00 01 02 02 01 05 05 24 00 10 01 04 24 02 02 05 24 06 00 01 05 24 01 03 01 07 05 81 03 10 00 01 09 04 01 00 02 0a ... 17 more bytes>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.477Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.480Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 1, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.527Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.529Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 2, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.531Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.534Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 3, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.536Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 255,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 770,
+      wIndex: 1033,
+      wLength: 255
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.538Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 4, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 36,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 24 03 48 00 50 00 20 00 49 00 6d 00 61 00 67 00 65 00 72 00 20 00 53 00 63 00 61 00 6e 00 6e 00 65 00 72 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.543Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 768,
+      wIndex: 0,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.546Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 5, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 4,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 04 03 09 04>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.548Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 65695, direction: 1, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 256,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 128, rType: 0, recipient: 0 },
+      bRequest: 6,
+      wValue: 771,
+      wIndex: 1033,
+      wLength: 256
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.554Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 6, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 30,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 1e 03 53 00 2f 00 4e 00 20 00 56 00 4e 00 43 00 38 00 30 00 33 00 30 00 32 00 31 00 37 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.557Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 1,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 0, recipient: 0 },
+      bRequest: 9,
+      wValue: 1,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.560Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 7, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.562Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 9, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: {
+          commandCode: 'USBIP_CMD_SUBMIT',
+          body: {
+            header: { seqnum: 10, devid: 65695, direction: 1, endpoint: 2 },
+            transferFlags: 0,
+            transferBufferLength: 4096,
+            startFrame: 0,
+            numberOfPackets: 0,
+            interval: 255,
+            setup: null,
+            transferBuffer: <Buffer >,
+            isoPacketDescriptor: <Buffer >,
+            leftoverData: {
+              commandCode: 'USBIP_CMD_SUBMIT',
+              body: {
+                header: { seqnum: 11, devid: 65695, direction: 1, endpoint: 2 },
+                transferFlags: 0,
+                transferBufferLength: 4096,
+                startFrame: 0,
+                numberOfPackets: 0,
+                interval: 255,
+                setup: null,
+                transferBuffer: <Buffer >,
+                isoPacketDescriptor: <Buffer >,
+                leftoverData: {
+                  commandCode: 'USBIP_CMD_SUBMIT',
+                  body: {
+                    header: {
+                      seqnum: 12,
+                      devid: 65695,
+                      direction: 0,
+                      endpoint: 0
+                    },
+                    transferFlags: 0,
+                    transferBufferLength: 7,
+                    startFrame: 0,
+                    numberOfPackets: 0,
+                    interval: 0,
+                    setup: {
+                      bmRequestType: { direction: 0, rType: 32, recipient: 1 },
+                      bRequest: 32,
+                      wValue: 0,
+                      wIndex: 0,
+                      wLength: 7
+                    },
+                    transferBuffer: <Buffer 80 25 00 00 00 00 08>,
+                    isoPacketDescriptor: <Buffer >,
+                    leftoverData: null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.565Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 12, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.571Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 13, devid: 65695, direction: 0, endpoint: 0 },
+    transferFlags: 0,
+    transferBufferLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 0,
+    setup: {
+      bmRequestType: { direction: 0, rType: 32, recipient: 1 },
+      bRequest: 34,
+      wValue: 0,
+      wIndex: 0,
+      wLength: 0
+    },
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:03.574Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 13, devid: 0, direction: 0, endpoint: 0 },
+    status: 0,
+    actualLength: 0,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:09.033Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 8, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 80 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:09.036Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 9, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 13,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer 30 34 39 30 30 30 30 30 36 33 34 36 0d>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:09.038Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 14, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: {
+      commandCode: 'USBIP_CMD_SUBMIT',
+      body: {
+        header: { seqnum: 15, devid: 65695, direction: 1, endpoint: 2 },
+        transferFlags: 0,
+        transferBufferLength: 4096,
+        startFrame: 0,
+        numberOfPackets: 0,
+        interval: 255,
+        setup: null,
+        transferBuffer: <Buffer >,
+        isoPacketDescriptor: <Buffer >,
+        leftoverData: null
+      }
+    }
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:09.041Z <- {
+  commandCode: 'USBIP_RET_SUBMIT',
+  body: {
+    header: { seqnum: 14, devid: 0, direction: 1, endpoint: 0 },
+    status: 0,
+    actualLength: 10,
+    startFrame: 0,
+    numberOfPackets: 0,
+    errorCount: 0,
+    transferBuffer: <Buffer a1 20 00 00 00 00 02 00 00 00>,
+    isoPacketDescriptor: <Buffer >
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2021-08-25T19:44:09.043Z -> {
+  commandCode: 'USBIP_CMD_SUBMIT',
+  body: {
+    header: { seqnum: 16, devid: 65695, direction: 1, endpoint: 1 },
+    transferFlags: 0,
+    transferBufferLength: 16,
+    startFrame: 0,
+    numberOfPackets: 0,
+    interval: 1,
+    setup: null,
+    transferBuffer: <Buffer >,
+    isoPacketDescriptor: <Buffer >,
+    leftoverData: null
+  }
+}-----------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -112,7 +112,15 @@ class StandardBRequests {
 
 class ClassBRequests {
     constructor() {
+        this.cdc = new CdcClassBRequests();
         this.hid = new HidClassBRequests();
+    }
+}
+
+class CdcClassBRequests {
+    constructor() {
+        this.setLineCoding = 0x20;
+        this.setControlLineState = 0x22;
     }
 }
 
@@ -140,6 +148,7 @@ class DescriptorTypes {
 
 class InterfaceClasses {
     constructor() {
+        this.communicationsAndCdcControl = 0x02,
         this.hid = 0x03;
     }
 }

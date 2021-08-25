@@ -198,7 +198,7 @@ class UsbIpServerSim extends EventEmitter {
     }
 
     /**
-     * Assign values which were left out by the user.
+     * Ensure required properties exist, and assign values which were left out by the user.
      * @param {SimulatedUsbDeviceSpec} spec
      * @param {number} defaultDeviceNumber
      */
@@ -245,11 +245,11 @@ class UsbIpServerSim extends EventEmitter {
             spec.configurations = [];
         } else {
             for (let configKey in spec.configurations) {
-                this._normalizeDeviceConfig(spec.configurations[configKey], Number(configKey) + 1);
+                this._normalizeDeviceConfig(spec.configurations[configKey], Number(configKey) + 1, spec);
             }
         }
 
-        if (!spec.bNumConfigurations) {
+        if (spec.bNumConfigurations == null) {
             spec.bNumConfigurations = spec.configurations.length;
         }
 
@@ -271,11 +271,12 @@ class UsbIpServerSim extends EventEmitter {
     }
 
     /**
-     * 
+     * Ensure required properties exist, and assign values which were left out by the user.
      * @param {SimulatedUsbDeviceConfiguration} config
      * @param {number} defaultConfigNumber
+     * @param {SimulatedUsbDeviceSpec} parentSpec
      */
-    _normalizeDeviceConfig(config, defaultConfigNumber) {
+    _normalizeDeviceConfig(config, defaultConfigNumber, parentSpec) {
         for (let requiredPropertyName of [
             'bmAttributes',
             'bMaxPower',
@@ -302,7 +303,7 @@ class UsbIpServerSim extends EventEmitter {
             config.interfaces = [];
         } else {
             for (let interfaceKey in config.interfaces) {
-                this._normalizeDeviceInterface(config.interfaces[interfaceKey], Number(interfaceKey) + 1);
+                this._normalizeDeviceInterface(config.interfaces[interfaceKey], Number(interfaceKey) + 1, config, parentSpec);
             }
         }
 
@@ -322,11 +323,13 @@ class UsbIpServerSim extends EventEmitter {
     }
 
     /**
-     * 
+     * Ensure required properties exist, and assign values which were left out by the user.
      * @param {SimulatedUsbDeviceInterface} iface
      * @param {number} defaultIfaceNumber
+     * @param {SimulatedUsbDeviceConfiguration} parentConfig
+     * @param {SimulatedUsbDeviceSpec} parentSpec
      */
-    _normalizeDeviceInterface(iface, defaultIfaceNumber) {
+    _normalizeDeviceInterface(iface, defaultIfaceNumber, parentConfig, parentSpec) {
         for (let requiredPropertyName of [
             'bInterfaceClass',
             'bInterfaceSubClass',
@@ -334,6 +337,20 @@ class UsbIpServerSim extends EventEmitter {
         ]) {
             if (iface[requiredPropertyName] == null) {
                 throw new Error(`SimulatedUsbDeviceInterface requires a value for property name '${requiredPropertyName}'`);
+            }
+        }
+
+        if (!iface.communicationsDescriptors) {
+            if (iface.bInterfaceClass == lib.interfaceClasses.communicationsAndCdcControl) {
+                throw new Error(`Device interface '${iface.bInterfaceNumber}' with { bInterfaceClass = ${iface.bInterfaceClass} (CDC) } requires 'communicationsDescriptors'`);
+            } else {
+                iface.communicationsDescriptors = [];
+            }
+        } else {
+            for (let descriptor of iface.communicationsDescriptors) {
+                if (!Buffer.isBuffer(descriptor)) {
+                    throw new Error(`Device interface '${iface.bInterfaceNumber}' with { bInterfaceClass = ${iface.bInterfaceClass} (CDC) } has 'communicationsDescriptors' array, but contained items must ALL be of type: Buffer`);
+                }
             }
         }
 
@@ -349,7 +366,7 @@ class UsbIpServerSim extends EventEmitter {
             }
         }
 
-        if (iface.hidDescriptor.preCompiledReport && iface.hidDescriptor.wDescriptorLength == null) {
+        if (iface.hidDescriptor && iface.hidDescriptor.preCompiledReport && iface.hidDescriptor.wDescriptorLength == null) {
             iface.hidDescriptor.wDescriptorLength = iface.hidDescriptor.preCompiledReport.length;
         }
 
@@ -361,7 +378,7 @@ class UsbIpServerSim extends EventEmitter {
             iface.endpoints = [];
         } else {
             for (let endpointKey in iface.endpoints) {
-                this._normalizeDeviceEndpoint(iface.endpoints[endpointKey], Number(endpointKey) + 1);
+                this._normalizeDeviceEndpoint(iface.endpoints[endpointKey], Number(endpointKey) + 1, iface, parentConfig, parentSpec);
             }
         }
 
@@ -371,15 +388,18 @@ class UsbIpServerSim extends EventEmitter {
 
         if (typeof iface.bAlternateSetting != typeof 0) iface.bAlternateSetting = 0;
         if (typeof iface.iInterface != typeof 0) iface.iInterface = 0;
-        if (typeof iface.isIdle != typeof false) iface.isIdle = false;
+        if (typeof iface._isIdle != typeof false) iface._isIdle = false;
     }
 
     /**
-     * 
+     * Ensure required properties exist, and assign values which were left out by the user.
      * @param {SimulatedUsbDeviceEndpoint} endpoint
      * @param {number} defaultEndpointNumber
+     * @param {SimulatedUsbDeviceInterface} parentInterface
+     * @param {SimulatedUsbDeviceConfiguration} parentConfig
+     * @param {SimulatedUsbDeviceSpec} parentSpec
      */
-    _normalizeDeviceEndpoint(endpoint, defaultEndpointNumber, allowEmptyIsoProperties) {
+    _normalizeDeviceEndpoint(endpoint, defaultEndpointNumber, parentInterface, parentConfig, parentSpec) {
         for (let requiredPropertyName of [
             'bEndpointAddress',
             'bmAttributes',
@@ -413,6 +433,14 @@ class UsbIpServerSim extends EventEmitter {
         }
 
         if (!endpoint.bEndpointAddress.endpointNumber) endpoint.bEndpointAddress.endpointNumber = defaultEndpointNumber;
+
+        if (parentSpec) {
+            if (!parentSpec.endpointShortcutMap || Object.getPrototypeOf(parentSpec.endpointShortcutMap) != Array.prototype) {
+                parentSpec.endpointShortcutMap = [];
+            }
+
+            parentSpec.endpointShortcutMap[endpoint.bEndpointAddress.endpointNumber] = endpoint;
+        }
     }
 
     /**
@@ -633,6 +661,7 @@ class UsbIpProtocolLayer extends EventEmitter {
                 this.notifyAndWriteData(socket, this.constructImportResponse(serverVersion, matchingDevice, true));
 
                 matchingDevice._attachedSocket = socket;
+                matchingDevice.on('bulkToHost', (bulkRequest, data) => this.handleDeviceBulkData(matchingDevice, bulkRequest, data));
                 matchingDevice.on('interrupt', (interrupt, data) => this.handleDeviceInterrupt(matchingDevice, interrupt, data));
                 matchingDevice._piops = new Queue(); // this handles any interruptOuts that are leftover if the device was detached then re-attached
                 matchingDevice.emit('attached');
@@ -682,11 +711,11 @@ class UsbIpProtocolLayer extends EventEmitter {
                             break;
 
                         case lib.transferTypes.isochronous:
-                            throw new Error('Not Implemented');
+                            throw new Error('isochronous transferType Not Implemented');
                             break;
 
                         case lib.transferTypes.bulk:
-                            throw new Error('Not Implemented');
+                            this.handleBulkPacketBody(targetDevice, body);
                             break;
 
                         case lib.transferTypes.interrupt:
@@ -883,6 +912,18 @@ class UsbIpProtocolLayer extends EventEmitter {
         let iface = targetDevice._findIface();
 
         switch (iface.bInterfaceClass) {
+            case lib.interfaceClasses.communicationsAndCdcControl:
+                switch (setup.bRequest) {
+                    case lib.bRequests.class.cdc.setLineCoding:
+                        return this.handleCdcSetLineCodingPacket(targetDevice, iface, setup, body.transferBuffer);
+
+                    case lib.bRequests.class.cdc.setControlLineState:
+                        return this.handleCdcSetControlLineStatePacket(targetDevice, iface, setup, body.transferBuffer);
+
+                    default:
+                        throw new Error(`Unsupported CDC bRequest ${setup.bRequest}; supported bRequests = ${util.inspect(lib.bRequests.class.cdc)}`);
+                }
+
             case lib.interfaceClasses.hid:
                 switch (setup.bRequest) {
                     case lib.bRequests.class.hid.setIdle:
@@ -1274,9 +1315,33 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {SimulatedUsbDevice} targetDevice
      * @param {SimulatedUsbDeviceInterface} iface
      * @param {ParsedSetupBytes} setup
+     * @param {Buffer} payload
+     */
+    handleCdcSetLineCodingPacket(targetDevice, iface, setup, payload) {
+        iface._lineCoding = payload;
+        return EMPTY_BUFFER;
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDevice} targetDevice
+     * @param {SimulatedUsbDeviceInterface} iface
+     * @param {ParsedSetupBytes} setup
+     * @param {Buffer} payload
+     */
+    handleCdcSetControlLineStatePacket(targetDevice, iface, setup, payload) {
+        iface._controlLineState = payload;
+        return EMPTY_BUFFER;
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDevice} targetDevice
+     * @param {SimulatedUsbDeviceInterface} iface
+     * @param {ParsedSetupBytes} setup
      */
     handleHidSetIdlePacket(targetDevice, iface, setup) {
-        iface.isIdle = true;
+        iface._isIdle = true;
         return EMPTY_BUFFER;
     }
     
@@ -1304,7 +1369,7 @@ class UsbIpProtocolLayer extends EventEmitter {
     handleGetHidReportDescriptorPacket(iface) {
         if (!iface.hidDescriptor || !iface.hidDescriptor.preCompiledReport) {
             this.emit('error', new Error('given interface has no hidDescriptor.preCompiledReport'));
-            return Buffer.alloc(0);
+            return EMPTY_BUFFER;
         } else {
             return iface.hidDescriptor.preCompiledReport;
         }
@@ -1317,6 +1382,32 @@ class UsbIpProtocolLayer extends EventEmitter {
      */
     handleSynchFramePacket(targetDevice, setup) {
         throw new Error('Not Implemented');
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDevice} targetDevice
+     * @param {SubmitCommandBody} bulk
+     */
+    handleBulkPacketBody(targetDevice, bulk) {
+        switch (bulk.header.direction) {
+            case lib.directions.in:
+                if (targetDevice._pbops.count < 1) {
+                    targetDevice._piips.enqueue(bulk);
+                } else {
+                    let data = targetDevice._pbops.dequeue();
+
+                    this.notifyAndWriteData(targetDevice._attachedSocket, this.constructBulkResponse(bulk, data));
+                }
+                break;
+
+            case lib.directions.out:
+                targetDevice.emit('bulkToDevice', bulk.transferBuffer);
+                break;
+
+            default:
+                throw new Error(`Unrecognized direction '${setup}'; known directions = ${util.inspect(lib.directions)}`);
+        }
     }
 
     /**
@@ -1337,6 +1428,20 @@ class UsbIpProtocolLayer extends EventEmitter {
 
                 this.notifyAndWriteData(targetDevice._attachedSocket, this.constructInterruptResponse(interrupt, data));
             }
+        }
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDevice} sender
+     * @param {SubmitCommandBody} bulkRequest
+     * @param {Buffer} data
+     */
+    handleDeviceBulkData(sender, bulkRequest, data) {
+        if (!bulkRequest) {
+            sender._piops.enqueue(data);
+        } else {
+            this.notifyAndWriteData(sender._attachedSocket, this.constructBulkResponse(bulkRequest, data));
         }
     }
 
@@ -2008,7 +2113,7 @@ class UsbIpProtocolLayer extends EventEmitter {
      */
     constructDeviceDescription(device, includeInterfaceDescriptions) {
         let spec = device.spec;
-        let defaultConfig = spec.configurations.find(config => !spec.bConfigurationValue || config.bConfigurationValue == spec.bConfigurationValue);
+        let defaultConfig = device._findConfig(spec.bConfigurationValue);
         let deviceDescriptionBytes = Buffer.concat(
             [
                 this.constructPathBytes(spec.path),
@@ -2222,6 +2327,15 @@ class UsbIpProtocolLayer extends EventEmitter {
             );
         }
 
+        if (iface.communicationsDescriptors.length > 0) {
+            ifaceDescriptor = Buffer.concat(
+                [
+                    ifaceDescriptor,
+                    ...iface.communicationsDescriptors,
+                ]
+            );
+        }
+
         if (includeEndpointDescriptors) {
             for (let endpoint of iface.endpoints) {
                 ifaceDescriptor = Buffer.concat(
@@ -2383,23 +2497,41 @@ class UsbIpProtocolLayer extends EventEmitter {
 
     /**
      * 
-     * @param {SubmitCommandBody} interruptRequest
-     * @param {Buffer} responseData
+     * @param {SubmitCommandBody} reqBody
+     * @param {Buffer} transferBuffer
      */
-    constructInterruptResponse(interruptRequest, responseData) {
-        let iHeader = interruptRequest.header;
+    constructRetSubmitPacket(reqBody, transferBuffer) {
+        let reqHeader = reqBody.header;
         return Buffer.concat(
             [
                 lib.commands.USBIP_RET_SUBMIT,
-                this.constructUsbipBasicHeader(iHeader.seqnum, 0, iHeader.direction, 0),
+                this.constructUsbipBasicHeader(reqHeader.seqnum, 0, reqHeader.direction, 0),
                 this.constructStatusBytes(0),
-                this.constructUInt32BE(responseData.length),
+                this.constructUInt32BE(transferBuffer.length),
                 Buffer.alloc(8), // start_frame and number_of_packets will both be zero because this is not an ISO transfer
                 Buffer.alloc(4), // TODO: error_count; not sure how to handle this yet
                 Buffer.alloc(8), // padding
-                responseData,
+                transferBuffer,
             ]
         );
+    }
+
+    /**
+     * 
+     * @param {SubmitCommandBody} bulkRequest
+     * @param {Buffer} bData
+     */
+    constructBulkResponse(bulkRequest, bData) {
+        return this.constructRetSubmitPacket(bulkRequest, bData);
+    }
+    
+    /**
+     * 
+     * @param {SubmitCommandBody} interruptRequest
+     * @param {Buffer} iData
+     */
+    constructInterruptResponse(interruptRequest, iData) {
+        return this.constructRetSubmitPacket(interruptRequest, iData);
     }
 }
 
@@ -2534,6 +2666,7 @@ class UsbIpServer extends net.Server {
  * @property {SimulatedUsbDeviceConfiguration[]} configurations
  * @property {number[]} [supportedLangs]
  * @property {string[]} [stringDescriptors]
+ * @property {SimulatedUsbDeviceEndpoint[]} [endpointShortcutMap]
  */
 
 /**
@@ -2560,11 +2693,14 @@ class UsbIpServer extends net.Server {
  * @property {number} bInterfaceClass
  * @property {number} bInterfaceSubClass
  * @property {number} bInterfaceProtocol
+ * @property {Buffer[]} [communicationsDescriptors]
  * @property {SimulatedUsbDeviceHidDescriptor} [hidDescriptor] Only necessary if device is class HID
  * @property {number} [bNumEndpoints]
  * @property {SimulatedUsbDeviceEndpoint[]} [endpoints]
  * @property {number} [iInterface]
- * @property {boolean} [isIdle]
+ * @property {Buffer} [_lineCoding]
+ * @property {Buffer} [_controlLineState]
+ * @property {boolean} [_isIdle]
  */
 
 /**
@@ -2620,6 +2756,22 @@ class SimulatedUsbDevice extends EventEmitter {
      */
 
     /**
+     * Event fired when the device receives bulk data
+     * 
+     * @event SimulatedUsbDevice#bulkToDevice
+     * @type {object}
+     * @property {Buffer} data
+     */
+
+    /**
+     * Event fired when the device sends bulk data
+     * 
+     * @event SimulatedUsbDevice#bulkToHost
+     * @type {object}
+     * @property {Buffer} data
+     */
+
+    /**
      * Event fired when the device writes an interrupt packet
      * 
      * @event SimulatedUsbDevice#interrupt
@@ -2637,6 +2789,18 @@ class SimulatedUsbDevice extends EventEmitter {
 
         /** @type {net.Socket} */
         this._attachedSocket = null;
+
+        /**
+         * Pending-Bulk-In-Packets
+         * @type {Queue<SubmitCommandBody>}
+         */
+        this._pbips = new Queue();
+
+        /**
+         * Pending-Bulk-Out-Packets
+         * @type {Queue<Buffer>}
+         */
+        this._pbops = new Queue();
 
         /**
          * Pending-Interrupt-In-Packets
@@ -2696,11 +2860,31 @@ class SimulatedUsbDevice extends EventEmitter {
      */
     _findEndpoint(iface, endpointNumberQuery) {
         if (!iface) {
-            return this._findEndpoint(this._findIface() || {}, endpointNumberQuery);
+            let ep = this._findEndpoint(this._findIface() || {}, endpointNumberQuery);
+            if (ep && endpointNumberQuery != null) {
+                return ep;
+            } else if (endpointNumberQuery != null) {
+                return this.spec.endpointShortcutMap[endpointNumberQuery];
+            } else {
+                return null;
+            }
         } else if (!endpointNumberQuery) {
             return iface.endpoints.find(ep => !!ep);
         } else {
             return iface.endpoints.find(ep => ep.bEndpointAddress.endpointNumber == endpointNumberQuery);
+        }
+    }
+
+    /**
+     * 
+     * @param {Buffer} data
+     * @fires SimulatedUsbDevice#bulkToHost
+     */
+    bulk(data) {
+        if (this._pbips.count < 1) {
+            this._pbops.enqueue(data);
+        } else {
+            this.emit('bulkToHost', this._pbips.dequeue(), data);
         }
     }
 
@@ -2751,26 +2935,100 @@ if (!module.parent) {
         //devnum: 1,
         //path: '/sys/devices/simulation/usb3/3-1',
         //busid: '3-1',
-        bcdDevice: 261,
-        bcdUSB: '0', // TODO: don't know what version the scanner runs on
+        speed: 3,
         idVendor: 1008,
         idProduct: 825,
+        bcdDevice: 0x0105,
         bDeviceClass: 2,
         bDeviceSubClass: 0,
         bDeviceProtocol: 0,
-        bMaxPacketSize0: 8, // TODO: don't know what this number is for the scanner
+        bConfigurationValue: 0, // dont have example of this
+        bcdUSB: '2.0.0',
+        bMaxPacketSize0: 64,
         iManufacturer: 1,
         iProduct: 2,
-        iSerialNumber: 0,
-        bConfigurationValue: 0, // dont have example of this
-        bNumConfigurations: 1,
-        speed: 3,
+        iSerialNumber: 3,
         configurations: [
-            
+            {
+                bConfigurationValue: 1,
+                iConfiguration: 4,
+                bmAttributes: {
+                    selfPowered: false,
+                    remoteWakeup: false,
+                },
+                bMaxPower: 200, // 400mA
+                interfaces: [
+                    {
+                        bInterfaceNumber: 0,
+                        bAlternateSetting: 0,
+                        bInterfaceClass: 0x02,
+                        bInterfaceSubClass: 0x02,
+                        bInterfaceProtocol: 0x01,
+                        iInterface: 5,
+                        communicationsDescriptors: [
+                            Buffer.from([0x05, 0x24, 0x00, 0x10, 0x01,]),
+                            Buffer.from([0x04, 0x24, 0x02, 0x02,]),
+                            Buffer.from([0x05, 0x24, 0x06, 0x00, 0x01,]),
+                            Buffer.from([0x05, 0x24, 0x01, 0x03, 0x01,]),
+                        ],
+                        endpoints: [
+                            {
+                                bEndpointAddress: {
+                                    direction: lib.directions.in,
+                                    endpointNumber: 1,
+                                },
+                                bmAttributes: {
+                                    transferType: lib.transferTypes.interrupt,
+                                },
+                                wMaxPacketSize: 16,
+                                bInterval: 1,
+                            },
+                        ],
+                    },
+                    {
+                        bInterfaceNumber: 1,
+                        bAlternateSetting: 0,
+                        bNumEndpoints: 2,
+                        bInterfaceClass: 0x0a,
+                        bInterfaceSubClass: 0x00,
+                        bInterfaceProtocol: 0x00,
+                        iInterface: 7,
+                        endpoints: [
+                            {
+                                bEndpointAddress: {
+                                    direction: lib.directions.in,
+                                    endpointNumber: 2,
+                                },
+                                bmAttributes: {
+                                    transferType: lib.transferTypes.bulk,
+                                },
+                                wMaxPacketSize: 64,
+                                bInterval: 255,
+                            },
+                            {
+                                bEndpointAddress: {
+                                    direction: lib.directions.out,
+                                    endpointNumber: 3,
+                                },
+                                bmAttributes: {
+                                    transferType: lib.transferTypes.bulk,
+                                },
+                                wMaxPacketSize: 64,
+                                bInterval: 255,
+                            }
+                        ],
+                    },
+                ],
+            },
         ],
         stringDescriptors: [
-            'HP',
-            'Barcode Scanner',
+            'HP',                    // descriptor 1 (iManufacturer)
+            'HP Imager Scanner',     // descriptor 2 (iProduct)
+            'S/N VNC8030217',        // descriptor 3 (iSerialNumber)
+            'Default Configuration', // descriptor 4 (iConfiguration)
+            'Interrupt Interface',   // descriptor 5 (iInterface)
+            '',                      // descriptor 6 (not used?)
+            'Bulk Interface',        // descriptor 7 (iInterface)
         ],
     });
 
@@ -2791,9 +3049,9 @@ if (!module.parent) {
         configurations: [
             {
                 iConfiguration: 3,
-                bMaxPower: 50,
+                bMaxPower: 50, // 100mA
                 bmAttributes: {
-                    selfPowered: true,
+                    selfPowered: false,
                     remoteWakeup: true,
                 },
                 interfaces: [
@@ -2833,10 +3091,10 @@ if (!module.parent) {
         ],
         supportedLangs: [0x0409], // english only
         stringDescriptors: [
-            'Dell',                   // descriptor 1
-            'Dell USB Optical Mouse', // descriptor 2
-            'Default Configuration',  // descriptor 3
-            'Default Interface',      // descriptor 4
+            'Dell',                   // descriptor 1 (iManufacturer)
+            'Dell USB Optical Mouse', // descriptor 2 (iProduct)
+            'Default Configuration',  // descriptor 3 (iConfiguration)
+            'Default Interface',      // descriptor 4 (iInterface)
         ],
     });
 
@@ -2866,10 +3124,10 @@ if (!module.parent) {
         }, 5000);
     });
 
-    //server.exportDevice(scannerDevice);
+    server.exportDevice(scannerDevice);
     server.exportDevice(mouseDevice);
 
-    server.listen('127.0.8.8');
+    server.listen('0.0.0.0');
 
     //collectTestData();
 }
@@ -2877,8 +3135,10 @@ if (!module.parent) {
 function collectTestData() {
     let fs = require('fs');
     let proto = new UsbIpProtocolLayer();
+    let data = require('./test_data.js').data;
 
-    for (let key in require('./test_data.js').data) {
+    fs.writeFileSync('test.txt', '');
+    for (let key in data) {
         fs.appendFileSync('test.txt', `${key} ${util.inspect(proto.parsePacket(Buffer.from(data[key]), { parseSetupPackets: true, parseLeftoverData: true }), false, Infinity)}`);
         fs.appendFileSync('test.txt', '-----------------------------------------------------------------------------------------------------------------------------------------------------------\r\n');
     }
