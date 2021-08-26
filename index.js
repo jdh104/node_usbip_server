@@ -1318,8 +1318,22 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {Buffer} payload
      */
     handleCdcSetLineCodingPacket(targetDevice, iface, setup, payload) {
-        iface._lineCoding = payload;
+        iface._lineCoding = this.readCdcLineCoding(payload);
         return EMPTY_BUFFER;
+    }
+
+    /**
+     * 
+     * @param {Buffer} coding
+     * @returns {CdcLineCoding}
+     */
+    readCdcLineCoding(coding) {
+        return {
+            dwDTERate: coding.readUInt32LE(),
+            bCharFormat: coding[4],
+            bParityType: coding[5],
+            bDataBits: coding[6],
+        };
     }
 
     /**
@@ -1393,7 +1407,7 @@ class UsbIpProtocolLayer extends EventEmitter {
         switch (bulk.header.direction) {
             case lib.directions.in:
                 if (targetDevice._pbops.count < 1) {
-                    targetDevice._piips.enqueue(bulk);
+                    targetDevice._pbips.enqueue(bulk);
                 } else {
                     let data = targetDevice._pbops.dequeue();
 
@@ -2698,9 +2712,17 @@ class UsbIpServer extends net.Server {
  * @property {number} [bNumEndpoints]
  * @property {SimulatedUsbDeviceEndpoint[]} [endpoints]
  * @property {number} [iInterface]
- * @property {Buffer} [_lineCoding]
+ * @property {CdcLineCoding} [_lineCoding]
  * @property {Buffer} [_controlLineState]
  * @property {boolean} [_isIdle]
+ */
+
+/**
+ * @typedef CdcLineCoding
+ * @property {number} dwDTERate
+ * @property {number} bCharFormat
+ * @property {number} bParityType
+ * @property {number} bDataBits
  */
 
 /**
@@ -3098,28 +3120,53 @@ if (!module.parent) {
         ],
     });
 
-    let closure = { x: 10, y: -5, xDirection: 1, yDirection: -2, buf: Buffer.alloc(4) };
+    setInterval(() => {
+        return scannerDevice && mouseDevice; // for debugging
+    }, 10000);
+
+    let smartWaterUpc = Buffer.from('786162338006\r');
+    scannerDevice.on('attached', () => {
+        console.log(`scanner attached, will begin sending data in 5 seconds`);
+        setTimeout(() => {
+            setInterval(() => {
+                // WAIT until the controller is ready for us to receive data
+                if (scannerDevice._piips.count > 0) {
+                    // SERIAL STATE (means data incoming?) --------------------------------------------- vvvv -----
+                    scannerDevice.interrupt(Buffer.from([0xa1, 0x20, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x80, 0x00]));
+
+                    // UPC
+                    scannerDevice.bulk(smartWaterUpc);
+
+                    // SERIAL STATE (means data no longer incoming?) ----------------------------------- vvvv -----
+                    scannerDevice.interrupt(Buffer.from([0xa1, 0x20, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00]));
+                }
+            }, 10000);
+        }, 5000);
+    });
+
+    // "mouse context"
+    let mcx = { x: 10, y: -5, xDirection: 1, yDirection: -2, buf: Buffer.alloc(4) };
 
     const LIMIT = 20;
     mouseDevice.on('attached', () => {
-        console.log(`attached, will begin sending interrupts in 5 seconds`);
+        console.log(`mouse attached, will begin sending interrupts in 5 seconds`);
         setTimeout(() => {
             setInterval(() => {
-                closure.x += closure.xDirection;
-                closure.y += closure.yDirection;
+                mcx.x += mcx.xDirection;
+                mcx.y += mcx.yDirection;
 
-                if (Math.abs(closure.x) >= LIMIT) {
-                    closure.xDirection *= -1;
+                if (Math.abs(mcx.x) >= LIMIT) {
+                    mcx.xDirection *= -1;
                 }
 
-                if (Math.abs(closure.y) >= LIMIT) {
-                    closure.yDirection *= -1;
+                if (Math.abs(mcx.y) >= LIMIT) {
+                    mcx.yDirection *= -1;
                 }
 
-                closure.buf.writeInt8(closure.x, 1);
-                closure.buf.writeInt8(closure.y, 2);
+                mcx.buf.writeInt8(mcx.x, 1);
+                mcx.buf.writeInt8(mcx.y, 2);
 
-                mouseDevice.interrupt(closure.buf);
+                mouseDevice.interrupt(mcx.buf);
             }, 40);
         }, 5000);
     });

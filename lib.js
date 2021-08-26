@@ -10,6 +10,8 @@ class UsbIpLexicon {
         this.bRequests = new BRequests();
         this.descriptorTypes = new DescriptorTypes();
         this.interfaceClasses = new InterfaceClasses();
+        this.parity = new Parities();
+        this.stopBits = new StopBits();
     }
 }
 
@@ -150,6 +152,24 @@ class InterfaceClasses {
     constructor() {
         this.communicationsAndCdcControl = 0x02,
         this.hid = 0x03;
+    }
+}
+
+class Parities {
+    constructor() {
+        this.none = 0;
+        this.odd = 1;
+        this.even = 2;
+        this.mark = 3;
+        this.space = 4;
+    }
+}
+
+class StopBits {
+    constructor() {
+        this.one = 0;
+        this.onePointFive = 1;
+        this.two = 2;
     }
 }
 
