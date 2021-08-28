@@ -1,6 +1,6 @@
 {
   "name": "node_usbip_server",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Module for simulating usb devices via the UsbIp protocol",
   "main": "index.js",
   "license": "ISC",
@@ -8,6 +8,11 @@
     "name": "Jonah D. Haney"
   },
   "scripts": {
-    "build-example": "nexe -t x64-12.9.1 -o MouseAndScannerExample.exe -r node_modules\\**\\*.js app.js && mkdir build & for /r %i in (*.node) do xcopy /Y \"%i\" build"
+    "build-example": "nexe -t x64-12.9.1 -o MouseAndScannerExample.exe -r node_modules\\**\\*.js app.js && mkdir build & for /r %i in (*.node) do xcopy /Y \"%i\" build",
+    "build-definitions": "erase *.d.ts & tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.4",
+    "typescript": "^4.4.2"
   }
 }
