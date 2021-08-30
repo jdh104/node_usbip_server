@@ -1,6 +1,8 @@
 
 'use strict';
 
+const util = require('util');
+
 /** @template T */
 class Queue {
     /**
@@ -16,6 +18,25 @@ class Queue {
 
         for (let initialItem of initialItems || []) {
             this.enqueue(initialItem);
+        }
+    }
+
+    [util.inspect.custom](depth, opts) {
+        console.log(util.inspect(arguments));
+        if (depth <= 2) {
+            return 'Queue ' + util.inspect({
+                count: this.count,
+            });
+        } else {
+            let items = [];
+            let iteratedItem = this._head;
+
+            while (iteratedItem) {
+                items.push(iteratedItem.val);
+                iteratedItem = iteratedItem.next;
+            }
+
+            return `Queue(${this.count}) ` + util.inspect(items);
         }
     }
 
@@ -65,6 +86,8 @@ class QueueNode {
      */
     constructor(val) {
         this.val = val;
+
+        /** @type {QueueNode<T>} */
         this.next = null;
     }
 }
