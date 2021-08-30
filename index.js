@@ -508,6 +508,13 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @type {object}
      * @property {Error} err
      */
+
+    /**
+     * @event UsbIpProtocolLayer#socketError
+     * @type {object}
+     * @property {net.Socket} socket
+     * @property {Error} err
+     */
         
     /**
      * @event UsbIpProtocolLayer#write
@@ -530,24 +537,6 @@ class UsbIpProtocolLayer extends EventEmitter {
         } else {
             this.encodedVersionNumber = this.encodeVersion(version);
         }
-        
-        //if (this.versionString) {
-        //    let versionSplit = this.versionString.split('.');
-        //    if (versionSplit.length > 4) {
-        //        throw new Error(`Bad configuration: 'version' may have a maximum of 4 version numbers`);
-        //    }
-        //    for (let versionNibble of versionSplit.reverse()) {
-        //        versionNibble = Number(versionNibble);
-        //        if (isNaN(versionNibble)) {
-        //            throw new Error(`Bad configuration: 'version' is not formatted correctly (must be numbers seperated by '.' character)`);
-        //        } else if (versionNibble < 0 || versionNibble > 0xf) {
-        //            throw new Error(`Bad configuration: 'version' numbers must each fit in a nibble; number '${versionNibble}' is too large/small`);
-        //        } else {
-        //            this.encodedVersionNumber <<= 4;
-        //            this.encodedVersionNumber += versionNibble;
-        //        }
-        //    }
-        //}
 
         this.server = serverToControl;
 
@@ -556,6 +545,7 @@ class UsbIpProtocolLayer extends EventEmitter {
                 socket.on('data', data => {
                     this.handle(data, socket)
                 });
+                socket.on('error', err => this.emit('socketError', socket, err));
                 socket.on('close', () => socket.destroy());
             });
         } else {
@@ -664,6 +654,7 @@ class UsbIpProtocolLayer extends EventEmitter {
                 matchingDevice.on('bulkToHost', (bulkRequest, data) => this.handleDeviceBulkData(matchingDevice, bulkRequest, data));
                 matchingDevice.on('interrupt', (interrupt, data) => this.handleDeviceInterrupt(matchingDevice, interrupt, data));
                 matchingDevice._piops = new Queue(); // this handles any interruptOuts that are leftover if the device was detached then re-attached
+                matchingDevice._pbops = new Queue(); // this handles any bulkOuts that are leftover if the device was detached then re-attached
                 matchingDevice.emit('attached');
                 matchingDevice._attachedSocket.on('close', hadError => {
                     matchingDevice._piips = new Queue(); // unregister pending interruptIns
