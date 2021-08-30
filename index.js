@@ -160,8 +160,8 @@ class UsbIpServerSim extends EventEmitter {
      * @param {UsbIpServerSimConfig} config
      */
     constructor(config) {
-        super(config.eventEmitterOptions);
         config = config || {};
+        super(config.eventEmitterOptions);
 
         try {
             this._server = new UsbIpServer(config.tcpOptions, config.devicesDirectory, config.simulatedBusNumber);
