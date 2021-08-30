@@ -2837,6 +2837,16 @@ class SimulatedUsbDevice extends EventEmitter {
         this._piops = new Queue();
     }
 
+    [util.inspect.custom](depth, opts) {
+        return 'SimulatedUsbDevice' + util.inspect({
+            spec: this.spec,
+            _pbips: this._pbips,
+            _pbops: this._pbops,
+            _piips: this._piips,
+            _piops: this._piops,
+        }, null, depth - 1);
+    }
+
     /**
      * 
      * @param {number} [configQuery]

@@ -36,7 +36,7 @@ class Queue {
                 iteratedItem = iteratedItem.next;
             }
 
-            return `Queue(${this.count}) ` + util.inspect(items);
+            return `Queue(${this.count}) ` + util.inspect(items, null, depth - 1);
         }
     }
 
