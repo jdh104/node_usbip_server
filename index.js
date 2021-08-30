@@ -2838,7 +2838,7 @@ class SimulatedUsbDevice extends EventEmitter {
     }
 
     [util.inspect.custom](depth, opts) {
-        return 'SimulatedUsbDevice' + util.inspect({
+        return 'SimulatedUsbDevice ' + util.inspect({
             spec: this.spec,
             _pbips: this._pbips,
             _pbops: this._pbops,
