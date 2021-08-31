@@ -254,4 +254,3 @@ paket-files/
 *.sln.iml
 
 # Custom ignores
-*.d.ts
