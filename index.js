@@ -658,6 +658,7 @@ class UsbIpProtocolLayer extends EventEmitter {
                 matchingDevice.emit('attached');
                 matchingDevice._attachedSocket.on('close', hadError => {
                     matchingDevice._piips = new Queue(); // unregister pending interruptIns
+                    matchingDevice._pbips = new Queue(); // unregister pending bulkIns
                     matchingDevice._attachedSocket = null;
                     matchingDevice.emit('detached');
                 });
