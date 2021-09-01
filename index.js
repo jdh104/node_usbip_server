@@ -1336,7 +1336,13 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {Buffer} payload
      */
     handleCdcSetControlLineStatePacket(targetDevice, iface, setup, payload) {
+        let oldLineState = iface._controlLineState;
         iface._controlLineState = payload;
+
+        if (!payload.equals(oldLineState)) {
+            targetDevice._notifyControlLineStateChanged(iface);
+        }
+
         return EMPTY_BUFFER;
     }
 
@@ -2770,6 +2776,14 @@ class SimulatedUsbDevice extends EventEmitter {
      */
 
     /**
+     * Event fired when the device has its control line state changed by the host driver
+     *
+     * @event SimulatedUsbDevice#controlLineStateChanged
+     * @type {object}
+     * @property {SimulatedUsbDeviceInterface} iface
+     */
+
+    /**
      * Event fired when the device receives bulk data
      * 
      * @event SimulatedUsbDevice#bulkToDevice
@@ -2897,6 +2911,14 @@ class SimulatedUsbDevice extends EventEmitter {
         } else {
             return iface.endpoints.find(ep => ep.bEndpointAddress.endpointNumber == endpointNumberQuery);
         }
+    }
+
+    /**
+     * 
+     * @param {SimulatedUsbDeviceInterface} iface
+     */
+    _notifyControlLineStateChanged(iface) {
+        this.emit('controlLineStateChanged', iface);
     }
 
     /**
