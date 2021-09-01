@@ -770,9 +770,6 @@ class UsbIpProtocolLayer extends EventEmitter {
                 this.handle(body.leftoverData, socket);
             }
         }
-
-        // TODO: implement
-        throw new Error(`USBIP_CMD_UNLINK Not Implemented. Packet = ${util.inspect(this.parsePacket(packet, { parseLeftoverData: true, parseSetupPackets: true }), false, Infinity)}`);
     }
 
     /**
