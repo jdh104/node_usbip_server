@@ -1369,10 +1369,10 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {Buffer} payload
      */
     handleCdcSetControlLineStatePacket(targetDevice, iface, setup, payload) {
-        let oldLineState = iface._controlLineState;
-        iface._controlLineState = payload;
+        let oldLineState = iface._controlLineState || EMPTY_BUFFER;
+        iface._controlLineState = payload || EMPTY_BUFFER;
 
-        if (!payload.equals(oldLineState)) {
+        if (!iface._controlLineState.equals(oldLineState)) {
             targetDevice._notifyControlLineStateChanged(iface);
         }
 
