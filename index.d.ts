@@ -505,6 +505,13 @@ export class SimulatedUsbDevice extends EventEmitter {
      * @type {object}
      */
     /**
+     * Event fired when the device has its control line state changed by the host driver
+     *
+     * @event SimulatedUsbDevice#controlLineStateChanged
+     * @type {object}
+     * @property {SimulatedUsbDeviceInterface} iface
+     */
+    /**
      * Event fired when the device receives bulk data
      *
      * @event SimulatedUsbDevice#bulkToDevice
@@ -573,6 +580,11 @@ export class SimulatedUsbDevice extends EventEmitter {
      * @returns {SimulatedUsbDeviceEndpoint}
      */
     _findEndpoint(iface: SimulatedUsbDeviceInterface, endpointNumberQuery: number): SimulatedUsbDeviceEndpoint;
+    /**
+     *
+     * @param {SimulatedUsbDeviceInterface} iface
+     */
+    _notifyControlLineStateChanged(iface: SimulatedUsbDeviceInterface): void;
     /**
      *
      * @param {Buffer} data
