@@ -12,6 +12,7 @@ class UsbIpLexicon {
         this.interfaceClasses = new InterfaceClasses();
         this.parity = new Parities();
         this.stopBits = new StopBits();
+        this.errorCodes = new ErrorCodes();
     }
 }
 
@@ -170,6 +171,12 @@ class StopBits {
         this.one = 0;
         this.onePointFive = 1;
         this.two = 2;
+    }
+}
+
+class ErrorCodes {
+    constructor() {
+        this.ECONNRESET = 54;
     }
 }
 

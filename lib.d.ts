@@ -10,6 +10,7 @@ declare class UsbIpLexicon {
     interfaceClasses: InterfaceClasses;
     parity: Parities;
     stopBits: StopBits;
+    errorCodes: ErrorCodes;
 }
 declare class UsbIpCommands {
     /** (0x8005) Retrieve the list of exported USB devices. */
@@ -71,6 +72,9 @@ declare class StopBits {
     one: number;
     onePointFive: number;
     two: number;
+}
+declare class ErrorCodes {
+    ECONNRESET: number;
 }
 declare class BmRequestDirections {
     deviceToHost: number;

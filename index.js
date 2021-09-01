@@ -715,7 +715,7 @@ class UsbIpProtocolLayer extends EventEmitter {
                             break;
 
                         default:
-                            throw new Error(`Unrecognized endpoint; known endpoints = ${util.inspect(lib.transferTypes)}`);
+                            throw new Error(`Unrecognized transferType; known endpoints = ${util.inspect(lib.transferTypes)}`);
                     }
                 } catch (err) {
                     this.error(new Error(`Unable to handle submit command to endpoint '${body.header.endpoint}'. Reason = ${util.inspect(err)}`));
@@ -735,6 +735,42 @@ class UsbIpProtocolLayer extends EventEmitter {
      * @param {Buffer} packet Incoming command data
      */
     [lib.commands.USBIP_CMD_UNLINK](socket, serverVersion, packet) {
+        let parsedPacket = this.parsePacket(packet);
+        if (parsedPacket.error) {
+            throw parsedPacket.error;
+        } else {
+            /** @type {UnlinkCommandBody} */
+            let body = parsedPacket.body;
+
+            let targetDevice = this.server.getDeviceByDevId(body.header.devid);
+
+            if (!targetDevice) {
+                throw new Error(`Could not find device with devId ${body.header.devid}`);
+            } else {
+                try {
+                    if (!body.header.endpoint) {
+                        var endpoint = targetDevice._findEndpoint();
+                    } else {
+                        var endpoint = targetDevice._findEndpoint(null, body.header.endpoint);
+                    }
+
+                    if (!endpoint) {
+                        var transferType = lib.transferTypes.control
+                    } else {
+                        var transferType = endpoint.bmAttributes.transferType;
+                    }
+
+                    this.handleUnlinkPacket(targetDevice, transferType, body);
+                } catch (err) {
+                    this.error(new Error(`Unable to handle submit command to endpoint '${body.header.endpoint}'. Reason = ${util.inspect(err)}`));
+                }
+            }
+
+            if (body.leftoverData) {
+                this.handle(body.leftoverData, socket);
+            }
+        }
+
         // TODO: implement
         throw new Error(`USBIP_CMD_UNLINK Not Implemented. Packet = ${util.inspect(this.parsePacket(packet, { parseLeftoverData: true, parseSetupPackets: true }), false, Infinity)}`);
     }
@@ -1445,6 +1481,63 @@ class UsbIpProtocolLayer extends EventEmitter {
 
     /**
      * 
+     * @param {SimulatedUsbDevice} targetDevice
+     * @param {number} transferType
+     * @param {UnlinkCommandBody} unlinkCommand
+     */
+    handleUnlinkPacket(targetDevice, transferType, unlinkCommand) {
+        let seqNumToUnlink = unlinkCommand.unlinkSeqNum;
+        switch (transferType) {
+            case lib.transferTypes.control:
+                var unlinkedPacket = targetDevice._pbips.removeWhere(packet => packet.header.seqnum == seqNumToUnlink);
+
+                if (!unlinkedPacket) {
+                    unlinkedPacket = targetDevice._piips.removeWhere(packet => packet.header.seqnum == seqNumToUnlink);
+                }
+
+                this.notifyAndWriteData(targetDevice._attachedSocket, this.constructUnlinkResponsePacket(unlinkCommand, unlinkedPacket));
+                break;
+
+            case lib.transferTypes.isochronous:
+                this.notifyAndWriteData(targetDevice._attachedSocket, this.constructUnlinkResponsePacket(unlinkCommand, null));
+                this.error(new Error('Cannot UNLINK isochronous packet. Reason = isochronous transferType Not Implemented'));
+                break;
+
+            case lib.transferTypes.bulk:
+                var unlinkedPacket = targetDevice._pbips.removeWhere(packet => packet.header.seqnum == seqNumToUnlink);
+                this.notifyAndWriteData(targetDevice._attachedSocket, this.constructUnlinkResponsePacket(unlinkCommand, unlinkedPacket));
+                break;
+
+            case lib.transferTypes.interrupt:
+                var unlinkedPacket = targetDevice._piips.removeWhere(packet => packet.header.seqnum == seqNumToUnlink);
+                this.notifyAndWriteData(targetDevice._attachedSocket, this.constructUnlinkResponsePacket(unlinkCommand, unlinkedPacket));
+                break;
+
+            default:
+                throw new Error(`Unrecognized transferType; known endpoints = ${util.inspect(lib.transferTypes)}`);
+        }
+    }
+
+    /**
+     * 
+     * @param {UnlinkCommandBody} command
+     * @param {SubmitCommandBody} unlinkedPacket
+     */
+    constructUnlinkResponsePacket(command, unlinkedPacket) {
+        let cmdHeader = command.header;
+        let status = unlinkedPacket ? 0 : lib.errorCodes.ECONNRESET;
+        return Buffer.concat(
+            [
+                lib.commands.USBIP_RET_UNLINK,
+                this.constructUsbipBasicHeader(cmdHeader.seqnum, 0, cmdHeader.direction, 0),
+                this.constructStatusBytes(status),
+                Buffer.alloc(24), // padding
+            ]
+        );
+    }
+
+    /**
+     * 
      * @param {SimulatedUsbDevice} sender
      * @param {SubmitCommandBody} bulkRequest
      * @param {Buffer} data
@@ -1481,13 +1574,13 @@ class UsbIpProtocolLayer extends EventEmitter {
      * 
      * @param {Buffer} packet
      * @param {PacketParseOptions} [options]
-     * @returns {UsbIpParsedPacket}
      */
     parsePacket(packet, options) {
         options = options || {};
         if (packet.length < 4) {
             throw new Error('Parse failure: length of packet must be at least 4');
         } else {
+            /** @type {UsbIpParsedPacket} */
             let parsedObject = {};
 
             try {

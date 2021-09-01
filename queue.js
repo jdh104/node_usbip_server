@@ -3,6 +3,8 @@
 
 const util = require('util');
 
+
+
 /** @template T */
 class Queue {
     /**
@@ -22,21 +24,21 @@ class Queue {
     }
 
     [util.inspect.custom](depth, opts) {
-        console.log(util.inspect(arguments));
         if (depth <= 2) {
             return 'Queue ' + util.inspect({
                 count: this.count,
             });
         } else {
-            let items = [];
-            let iteratedItem = this._head;
+            return `Queue(${this.count}) ` + util.inspect([...this.iterate()].map(node => node.val), null, depth - 1);
+        }
+    }
 
-            while (iteratedItem) {
-                items.push(iteratedItem.val);
-                iteratedItem = iteratedItem.next;
-            }
+    *iterate() {
+        let iteratedItem = this._head;
 
-            return `Queue(${this.count}) ` + util.inspect(items, null, depth - 1);
+        while (iteratedItem) {
+            yield iteratedItem;
+            iteratedItem = iteratedItem.next;
         }
     }
 
@@ -74,6 +76,66 @@ class Queue {
             return this._head.val;
         } else {
             return null;
+        }
+    }
+
+    /**
+     * @callback RemoveWherePredicate
+     * @param {T} item
+     * @returns {boolean}
+     */
+
+    /**
+     * 
+     * @param {RemoveWherePredicate} predicate
+     */
+    removeWhere(predicate) {
+        if (predicate == null) {
+            throw new Error(`'predicate' cannot be ${util.inspect(predicate)} (equivalent to null)`);
+        } else {
+            let iterator = this.iterate();
+
+            /** @type {QueueNode<T>} */
+            let previousItem = null;
+            let currentItem = previousItem;
+
+            let iteration = iterator.next();
+
+            do {
+                previousItem = currentItem;
+                currentItem = iteration.value;
+
+                if (currentItem && predicate(currentItem.val)) {
+                    let nextItem = iterator.next().value;
+
+                    if (!previousItem) {
+                        this._head = nextItem;
+                    } else if (!nextItem) {
+                        previousItem.next = this._tail = null;
+                    } else {
+                        previousItem.next = nextItem;
+                    }
+
+                    this.count--;
+                    return currentItem.val;
+                } else {
+                    iteration = iterator.next();
+                }
+            } while (!iteration.done);
+
+            return null;
+        }
+    }
+
+    /**
+     * 
+     * @param {T} itemToRemove
+     */
+    remove(itemToRemove) {
+        if (itemToRemove == null) {
+            throw new Error(`'itemToRemove' cannot be ${util.inspect(itemToRemove)} (equivalent to null)`);
+        } else {
+            return this.removeWhere(item => item == itemToRemove);
         }
     }
 }

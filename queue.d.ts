@@ -11,6 +11,7 @@ export class Queue<T> {
     /** @type {QueueNode<T>} */
     _tail: QueueNode<T>;
     count: number;
+    iterate(): Generator<QueueNode<T>, void, unknown>;
     /**
      * Returns the new queue count
      * @param {T} item
@@ -18,7 +19,22 @@ export class Queue<T> {
     enqueue(item: T): number;
     dequeue(): T | null;
     peek(): T | null;
-    [util.inspect.custom](depth: any, opts: any, ...args: any[]): string;
+    /**
+     * @callback RemoveWherePredicate
+     * @param {T} item
+     * @returns {boolean}
+     */
+    /**
+     *
+     * @param {RemoveWherePredicate} predicate
+     */
+    removeWhere(predicate: (item: T) => boolean): T | null;
+    /**
+     *
+     * @param {T} itemToRemove
+     */
+    remove(itemToRemove: T): T | null;
+    [util.inspect.custom](depth: any, opts: any): string;
 }
 /** @template T */
 declare class QueueNode<T> {

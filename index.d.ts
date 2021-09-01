@@ -934,6 +934,19 @@ declare class UsbIpProtocolLayer extends EventEmitter {
     handleInterruptPacketBody(targetDevice: SimulatedUsbDevice, interrupt: SubmitCommandBody): void;
     /**
      *
+     * @param {SimulatedUsbDevice} targetDevice
+     * @param {number} transferType
+     * @param {UnlinkCommandBody} unlinkCommand
+     */
+    handleUnlinkPacket(targetDevice: SimulatedUsbDevice, transferType: number, unlinkCommand: UnlinkCommandBody): void;
+    /**
+     *
+     * @param {UnlinkCommandBody} command
+     * @param {SubmitCommandBody} unlinkedPacket
+     */
+    constructUnlinkResponsePacket(command: UnlinkCommandBody, unlinkedPacket: SubmitCommandBody): Buffer;
+    /**
+     *
      * @param {SimulatedUsbDevice} sender
      * @param {SubmitCommandBody} bulkRequest
      * @param {Buffer} data
@@ -955,7 +968,6 @@ declare class UsbIpProtocolLayer extends EventEmitter {
      *
      * @param {Buffer} packet
      * @param {PacketParseOptions} [options]
-     * @returns {UsbIpParsedPacket}
      */
     parsePacket(packet: Buffer, options?: {
         parseLeftoverData: boolean;
