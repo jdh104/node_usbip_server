@@ -1442,7 +1442,7 @@ class UsbIpProtocolLayer extends EventEmitter {
                 } else {
                     let data = targetDevice._pbops.dequeue();
 
-                    this.notifyAndWriteData(targetDevice._attachedSocket, this.constructBulkResponse(bulk, data));
+                    tergetDevice.emit('bulkToHost', bulk, data);
                 }
                 break;
 
@@ -1471,7 +1471,7 @@ class UsbIpProtocolLayer extends EventEmitter {
             } else {
                 let data = targetDevice._piops.dequeue();
 
-                this.notifyAndWriteData(targetDevice._attachedSocket, this.constructInterruptResponse(interrupt, data));
+                targetDevice.emit('interupt', interrupt, data);
             }
         }
     }
