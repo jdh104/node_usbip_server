@@ -1,6 +1,6 @@
 {
   "name": "node_usbip_server",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Module for simulating usb devices via the UsbIp protocol",
   "main": "index.js",
   "license": "ISC",
