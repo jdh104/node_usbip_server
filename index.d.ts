@@ -1346,13 +1346,14 @@ declare class UsbIpServer extends net.Server {
      */
     getDeviceByDevId(devIdQuery: number): SimulatedUsbDevice | null;
 }
+import { Queue } from "./queue.js";
 import net = require("net");
 import { EventEmitter } from "events";
-import { Queue } from "./queue.js";
 import util = require("util");
 export declare namespace usbIpInternals {
     export { lib };
     export { UsbIpProtocolLayer };
     export { UsbIpServer };
+    export { Queue };
 }
 export {};
