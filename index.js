@@ -943,7 +943,7 @@ class UsbIpProtocolLayer extends EventEmitter {
                         return this.handleCdcSetLineCodingPacket(targetDevice, iface, setup, body.transferBuffer);
 
                     case lib.bRequests.class.cdc.setControlLineState:
-                        return this.handleCdcSetControlLineStatePacket(targetDevice, iface, setup, body.transferBuffer);
+                        return this.handleCdcSetControlLineStatePacket(targetDevice, iface, setup, body.setup.slice(2));
 
                     default:
                         throw new Error(`Unsupported CDC bRequest ${setup.bRequest}; supported bRequests = ${util.inspect(lib.bRequests.class.cdc)}`);
