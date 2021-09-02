@@ -3047,6 +3047,7 @@ module.exports = {
         lib,
         UsbIpProtocolLayer,
         UsbIpServer,
+        Queue,
     }
 };
 
