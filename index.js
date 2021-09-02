@@ -1541,7 +1541,7 @@ class UsbIpProtocolLayer extends EventEmitter {
      */
     handleDeviceBulkData(sender, bulkRequest, data) {
         if (!bulkRequest) {
-            sender._piops.enqueue(data);
+            sender._pbops.enqueue(data);
         } else {
             this.notifyAndWriteData(sender._attachedSocket, this.constructBulkResponse(bulkRequest, data));
         }
