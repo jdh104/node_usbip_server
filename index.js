@@ -1471,7 +1471,7 @@ class UsbIpProtocolLayer extends EventEmitter {
             } else {
                 let data = targetDevice._piops.dequeue();
 
-                targetDevice.emit('interupt', interrupt, data);
+                targetDevice.emit('interrupt', interrupt, data);
             }
         }
     }
