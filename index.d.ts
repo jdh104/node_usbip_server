@@ -396,99 +396,6 @@ export class UsbIpServerSim extends EventEmitter {
      */
     listen(address: string, port?: number | undefined): UsbIpServerSim;
 }
-/**
- * @typedef SimulatedUsbDeviceSpec
- * @property {string} [path]   Will be automatically set by server simulator when exported (if not present)
- * @property {string} [busid]  Will be automatically set by server simulator when exported (if not present)
- * @property {number} [busnum] Will be automatically set by server simulator when exported (if not present)
- * @property {number} [devnum] Will be automatically set by server simulator when exported (if not present)
- * @property {number} speed
- * @property {number} idVendor
- * @property {number} idProduct
- * @property {number} bcdDevice device revision number
- * @property {string} bcdUSB USB specification version (Formatted such that version 2.1 is represented as '0.2.1.0')
- * @property {number} bDeviceClass
- * @property {number} bDeviceSubClass
- * @property {number} bDeviceProtocol
- * @property {8 | 16 | 32 | 64} bMaxPacketSize0 Maximum packet size for Endpoint zero
- * @property {number} [bConfigurationValue]
- * @property {number} [iManufacturer]
- * @property {number} [iProduct]
- * @property {number} [iSerialNumber]
- * @property {number} [bNumConfigurations]
- * @property {SimulatedUsbDeviceConfiguration[]} configurations
- * @property {number[]} [supportedLangs]
- * @property {string[]} [stringDescriptors]
- * @property {SimulatedUsbDeviceEndpoint[]} [endpointShortcutMap]
- */
-/**
- * @typedef SimulatedUsbDeviceConfiguration
- * @property {number} [bConfigurationValue]
- * @property {number | ConfigAttributes} bmAttributes
- * @property {number} bMaxPower in increments of 2mA (for example, if max power is 100mA, bMaxPower should be 50)
- * @property {number} [bNumInterfaces]
- * @property {SimulatedUsbDeviceInterface[]} [interfaces]
- * @property {number} iConfiguration
- * @property {number} [_bInterfaceNumber] Represents the "currently selected" interface (not part of spec apparently)
- */
-/**
- * @typedef ConfigAttributes
- * @property {boolean} selfPowered
- * @property {boolean} remoteWakeup
- */
-/**
- * @typedef SimulatedUsbDeviceInterface
- * @property {number} [bInterfaceNumber]
- * @property {number} [bAlternateSetting]
- * @property {number} bInterfaceClass
- * @property {number} bInterfaceSubClass
- * @property {number} bInterfaceProtocol
- * @property {Buffer[]} [communicationsDescriptors]
- * @property {SimulatedUsbDeviceHidDescriptor} [hidDescriptor] Only necessary if device is class HID
- * @property {number} [bNumEndpoints]
- * @property {SimulatedUsbDeviceEndpoint[]} [endpoints]
- * @property {number} [iInterface]
- * @property {CdcLineCoding} [_lineCoding]
- * @property {Buffer} [_controlLineState]
- * @property {boolean} [_isIdle]
- */
-/**
- * @typedef CdcLineCoding
- * @property {number} dwDTERate
- * @property {number} bCharFormat
- * @property {number} bParityType
- * @property {number} bDataBits
- */
-/**
- * @typedef SimulatedUsbDeviceHidDescriptor
- * @property {number} bcdHID
- * @property {number} [bCountryCode]
- * @property {number} [wDescriptorLength]
- * @property {HidReportDescriptorReport} [report]
- * @property {Buffer} [preCompiledReport]
- */
-/**
- * Not supported yet (why would we ever?)
- * @typedef HidReportDescriptorReport
- */
-/**
- * @typedef SimulatedUsbDeviceEndpoint
- * @property {EndpointAddress} bEndpointAddress
- * @property {EndpointAttributes} bmAttributes
- * @property {number} wMaxPacketSize
- * @property {number} bInterval
- */
-/**
- * @typedef EndpointAddress
- * @property {number} [endpointNumber]
- * @property {0 | 1} direction
- */
-/**
- * @typedef EndpointAttributes
- * @property {number} transferType
- * @property {number} [synchronisationType] required only for isochronous transferType
- * @property {number} [usageType] required only for isochronous transferType
- */
 /** */
 export class SimulatedUsbDevice extends EventEmitter {
     /**
@@ -547,9 +454,9 @@ export class SimulatedUsbDevice extends EventEmitter {
     _pbips: Queue<SubmitCommandBody>;
     /**
      * Pending-Bulk-Out-Packets
-     * @type {Queue<Buffer>}
+     * @type {Queue<PendingOutData>}
      */
-    _pbops: Queue<Buffer>;
+    _pbops: Queue<PendingOutData>;
     /**
      * Pending-Interrupt-In-Packets
      * @type {Queue<SubmitCommandBody>}
@@ -557,9 +464,9 @@ export class SimulatedUsbDevice extends EventEmitter {
     _piips: Queue<SubmitCommandBody>;
     /**
      * Pending-Interrupt-Out-Packets
-     * @type {Queue<Buffer>}
+     * @type {Queue<PendingOutData>}
      */
-    _piops: Queue<Buffer>;
+    _piops: Queue<PendingOutData>;
     /**
      *
      * @param {number} [configQuery]
@@ -590,13 +497,13 @@ export class SimulatedUsbDevice extends EventEmitter {
      * @param {Buffer} data
      * @fires SimulatedUsbDevice#bulkToHost
      */
-    bulk(data: Buffer): void;
+    bulk(data: Buffer): Promise<any>;
     /**
      *
      * @param {Buffer} data
      * @fires SimulatedUsbDevice#interrupt
      */
-    interrupt(data: Buffer): void;
+    interrupt(data: Buffer): Promise<any>;
     [util.inspect.custom](depth: any, opts: any): string;
 }
 import lib = require("./lib.js");
@@ -949,16 +856,16 @@ declare class UsbIpProtocolLayer extends EventEmitter {
      *
      * @param {SimulatedUsbDevice} sender
      * @param {SubmitCommandBody} bulkRequest
-     * @param {Buffer} data
+     * @param {PendingOutData} data
      */
-    handleDeviceBulkData(sender: SimulatedUsbDevice, bulkRequest: SubmitCommandBody, data: Buffer): void;
+    handleDeviceBulkData(sender: SimulatedUsbDevice, bulkRequest: SubmitCommandBody, data: PendingOutData): void;
     /**
      *
      * @param {SimulatedUsbDevice} sender
      * @param {SubmitCommandBody} interrupt
-     * @param {Buffer} data
+     * @param {PendingOutData} data
      */
-    handleDeviceInterrupt(sender: SimulatedUsbDevice, interrupt: SubmitCommandBody, data: Buffer): void;
+    handleDeviceInterrupt(sender: SimulatedUsbDevice, interrupt: SubmitCommandBody, data: PendingOutData): void;
     /**
      * @typedef PacketParseOptions
      * @property {boolean} parseLeftoverData
@@ -1349,6 +1256,112 @@ declare class UsbIpServer extends net.Server {
 import { Queue } from "./queue.js";
 import net = require("net");
 import { EventEmitter } from "events";
+/**
+ * @typedef SimulatedUsbDeviceSpec
+ * @property {string} [path]   Will be automatically set by server simulator when exported (if not present)
+ * @property {string} [busid]  Will be automatically set by server simulator when exported (if not present)
+ * @property {number} [busnum] Will be automatically set by server simulator when exported (if not present)
+ * @property {number} [devnum] Will be automatically set by server simulator when exported (if not present)
+ * @property {number} speed
+ * @property {number} idVendor
+ * @property {number} idProduct
+ * @property {number} bcdDevice device revision number
+ * @property {string} bcdUSB USB specification version (Formatted such that version 2.1 is represented as '0.2.1.0')
+ * @property {number} bDeviceClass
+ * @property {number} bDeviceSubClass
+ * @property {number} bDeviceProtocol
+ * @property {8 | 16 | 32 | 64} bMaxPacketSize0 Maximum packet size for Endpoint zero
+ * @property {number} [bConfigurationValue]
+ * @property {number} [iManufacturer]
+ * @property {number} [iProduct]
+ * @property {number} [iSerialNumber]
+ * @property {number} [bNumConfigurations]
+ * @property {SimulatedUsbDeviceConfiguration[]} configurations
+ * @property {number[]} [supportedLangs]
+ * @property {string[]} [stringDescriptors]
+ * @property {SimulatedUsbDeviceEndpoint[]} [endpointShortcutMap]
+ */
+/**
+ * @typedef SimulatedUsbDeviceConfiguration
+ * @property {number} [bConfigurationValue]
+ * @property {number | ConfigAttributes} bmAttributes
+ * @property {number} bMaxPower in increments of 2mA (for example, if max power is 100mA, bMaxPower should be 50)
+ * @property {number} [bNumInterfaces]
+ * @property {SimulatedUsbDeviceInterface[]} [interfaces]
+ * @property {number} iConfiguration
+ * @property {number} [_bInterfaceNumber] Represents the "currently selected" interface (not part of spec apparently)
+ */
+/**
+ * @typedef ConfigAttributes
+ * @property {boolean} selfPowered
+ * @property {boolean} remoteWakeup
+ */
+/**
+ * @typedef SimulatedUsbDeviceInterface
+ * @property {number} [bInterfaceNumber]
+ * @property {number} [bAlternateSetting]
+ * @property {number} bInterfaceClass
+ * @property {number} bInterfaceSubClass
+ * @property {number} bInterfaceProtocol
+ * @property {Buffer[]} [communicationsDescriptors]
+ * @property {SimulatedUsbDeviceHidDescriptor} [hidDescriptor] Only necessary if device is class HID
+ * @property {number} [bNumEndpoints]
+ * @property {SimulatedUsbDeviceEndpoint[]} [endpoints]
+ * @property {number} [iInterface]
+ * @property {CdcLineCoding} [_lineCoding]
+ * @property {Buffer} [_controlLineState]
+ * @property {boolean} [_isIdle]
+ */
+/**
+ * @typedef CdcLineCoding
+ * @property {number} dwDTERate
+ * @property {number} bCharFormat
+ * @property {number} bParityType
+ * @property {number} bDataBits
+ */
+/**
+ * @typedef SimulatedUsbDeviceHidDescriptor
+ * @property {number} bcdHID
+ * @property {number} [bCountryCode]
+ * @property {number} [wDescriptorLength]
+ * @property {HidReportDescriptorReport} [report]
+ * @property {Buffer} [preCompiledReport]
+ */
+/**
+ * Not supported yet (why would we ever?)
+ * @typedef HidReportDescriptorReport
+ */
+/**
+ * @typedef SimulatedUsbDeviceEndpoint
+ * @property {EndpointAddress} bEndpointAddress
+ * @property {EndpointAttributes} bmAttributes
+ * @property {number} wMaxPacketSize
+ * @property {number} bInterval
+ */
+/**
+ * @typedef EndpointAddress
+ * @property {number} [endpointNumber]
+ * @property {0 | 1} direction
+ */
+/**
+ * @typedef EndpointAttributes
+ * @property {number} transferType
+ * @property {number} [synchronisationType] required only for isochronous transferType
+ * @property {number} [usageType] required only for isochronous transferType
+ */
+declare class PendingOutData {
+    /**
+     *
+     * @param {Buffer} data
+     * @param {Function} resolver
+     * @param {Function} rejecter
+     */
+    constructor(data: Buffer, resolver: Function, rejecter: Function);
+    data: Buffer;
+    resolver: Function;
+    rejecter: Function;
+    [util.inspect.custom](depth: any, opts: any): string;
+}
 import util = require("util");
 export declare namespace usbIpInternals {
     export { lib };

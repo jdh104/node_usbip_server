@@ -3,8 +3,6 @@
 
 const util = require('util');
 
-
-
 /** @template T */
 class Queue {
     /**
@@ -29,7 +27,7 @@ class Queue {
                 count: this.count,
             });
         } else {
-            return `Queue(${this.count}) ` + util.inspect([...this.iterate()].map(node => node.val), null, depth - 1);
+            return `Queue(${this.count}) ${util.inspect([...this.iterate()].map(node => node.val), false, depth)}`;
         }
     }
 

@@ -648,11 +648,16 @@ class UsbIpProtocolLayer extends EventEmitter {
             let matchingDevice = this.server.getDeviceByBusId(requestedBusId);
 
             if (matchingDevice && !matchingDevice._attachedSocket) {
+                matchingDevice._attachedSocket = socket;
+
                 this.notifyAndWriteData(socket, this.constructImportResponse(serverVersion, matchingDevice, true));
 
-                matchingDevice._attachedSocket = socket;
-                matchingDevice.on('bulkToHost', (bulkRequest, data) => this.handleDeviceBulkData(matchingDevice, bulkRequest, data));
-                matchingDevice.on('interrupt', (interrupt, data) => this.handleDeviceInterrupt(matchingDevice, interrupt, data));
+                matchingDevice
+                    .removeAllListeners('bulkToHost')
+                    .removeAllListeners('interrupt')
+                    .on('bulkToHost', (bulkRequest, data) => this.handleDeviceBulkData(matchingDevice, bulkRequest, data))
+                    .on('interrupt', (interrupt, data) => this.handleDeviceInterrupt(matchingDevice, interrupt, data));
+
                 matchingDevice._piops = new Queue(); // this handles any interruptOuts that are leftover if the device was detached then re-attached
                 matchingDevice._pbops = new Queue(); // this handles any bulkOuts that are leftover if the device was detached then re-attached
                 matchingDevice.emit('attached');
@@ -1537,13 +1542,14 @@ class UsbIpProtocolLayer extends EventEmitter {
      * 
      * @param {SimulatedUsbDevice} sender
      * @param {SubmitCommandBody} bulkRequest
-     * @param {Buffer} data
+     * @param {PendingOutData} data
      */
     handleDeviceBulkData(sender, bulkRequest, data) {
         if (!bulkRequest) {
             sender._pbops.enqueue(data);
         } else {
-            this.notifyAndWriteData(sender._attachedSocket, this.constructBulkResponse(bulkRequest, data));
+            this.notifyAndWriteData(sender._attachedSocket, this.constructBulkResponse(bulkRequest, data.data));
+            data.resolver();
         }
     }
 
@@ -1551,13 +1557,14 @@ class UsbIpProtocolLayer extends EventEmitter {
      * 
      * @param {SimulatedUsbDevice} sender
      * @param {SubmitCommandBody} interrupt
-     * @param {Buffer} data
+     * @param {PendingOutData} data
      */
     handleDeviceInterrupt(sender, interrupt, data) {
         if (!interrupt) {
             sender._piops.enqueue(data);
         } else {
-            this.notifyAndWriteData(sender._attachedSocket, this.constructInterruptResponse(interrupt, data));
+            this.notifyAndWriteData(sender._attachedSocket, this.constructInterruptResponse(interrupt, data.data));
+            data.resolver();
         }
     }
 
@@ -2848,6 +2855,24 @@ class UsbIpServer extends net.Server {
  * @property {number} [usageType] required only for isochronous transferType
  */
 
+class PendingOutData {
+    /**
+     * 
+     * @param {Buffer} data
+     * @param {Function} resolver
+     * @param {Function} rejecter
+     */
+    constructor(data, resolver, rejecter) {
+        this.data = data;
+        this.resolver = resolver;
+        this.rejecter = rejecter;
+    }
+
+    [util.inspect.custom](depth, opts) {
+        return `PendingOutData ${util.inspect({ data: this.data }, false, depth)}`;
+    }
+}
+
 /** */
 class SimulatedUsbDevice extends EventEmitter {
     /**
@@ -2916,7 +2941,7 @@ class SimulatedUsbDevice extends EventEmitter {
 
         /**
          * Pending-Bulk-Out-Packets
-         * @type {Queue<Buffer>}
+         * @type {Queue<PendingOutData>}
          */
         this._pbops = new Queue();
 
@@ -2928,7 +2953,7 @@ class SimulatedUsbDevice extends EventEmitter {
 
         /**
          * Pending-Interrupt-Out-Packets
-         * @type {Queue<Buffer>}
+         * @type {Queue<PendingOutData>}
          */
         this._piops = new Queue();
     }
@@ -3017,11 +3042,13 @@ class SimulatedUsbDevice extends EventEmitter {
      * @fires SimulatedUsbDevice#bulkToHost
      */
     bulk(data) {
-        if (this._pbips.count < 1) {
-            this._pbops.enqueue(data);
-        } else {
-            this.emit('bulkToHost', this._pbips.dequeue(), data);
-        }
+        return new Promise((resolve, reject) => {
+            if (this._pbips.count < 1) {
+                this._pbops.enqueue(new PendingOutData(data, resolve, reject));
+            } else {
+                this.emit('bulkToHost', this._pbips.dequeue(), new PendingOutData(data, resolve, reject));
+            }
+        });
     }
 
     /**
@@ -3030,11 +3057,13 @@ class SimulatedUsbDevice extends EventEmitter {
      * @fires SimulatedUsbDevice#interrupt
      */
     interrupt(data) {
-        if (this._piips.count < 1) {
-            this._piops.enqueue(data);
-        } else {
-            this.emit('interrupt', this._piips.dequeue(), data);
-        }
+        return new Promise((resolve, reject) => {
+            if (this._piips.count < 1) {
+                this._piops.enqueue(new PendingOutData(data, resolve, reject));
+            } else {
+                this.emit('interrupt', this._piips.dequeue(), new PendingOutData(data, resolve, reject));
+            }
+        });
     }
 }
 
